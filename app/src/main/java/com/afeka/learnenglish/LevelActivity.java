@@ -14,9 +14,9 @@ public class LevelActivity extends AppCompatActivity {
     TextView username_display;
     TextView age_display;
 
-    Button basis_button;
-    Button advanced_a_button;
-    Button advanced_b_button;
+    Button button_basis;
+    Button button_beginners;
+    Button button_advanced;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -34,35 +34,43 @@ public class LevelActivity extends AppCompatActivity {
         username_display.setText(username);
         age_display.setText(String.valueOf(age));
 
-        advanced_a_button = (Button) findViewById(R.id.button_beginners);
-        basis_button = (Button) findViewById(R.id.button_basis);
-        advanced_b_button = (Button) findViewById(R.id.button_advanced);
+        button_beginners = (Button) findViewById(R.id.button_beginners);
+        button_basis = (Button) findViewById(R.id.button_basis);
+        button_advanced = (Button) findViewById(R.id.button_advanced);
 
 
-        basis_button.setOnClickListener(new View.OnClickListener() {
+        button_basis.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LevelActivity.this , OptionActivity.class);
-                startActivity(intent);
+                button_level_click();
             }
         });
 
-        advanced_a_button.setOnClickListener(new View.OnClickListener() {
+        button_beginners.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LevelActivity.this , OptionActivity.class);
-                startActivity(intent);
+                button_level_click();
             }
         });
 
-        advanced_b_button.setOnClickListener(new View.OnClickListener() {
+        button_advanced.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Intent intent = new Intent(LevelActivity.this , OptionActivity.class);
-                startActivity(intent);
+                button_level_click();
             }
         });
 
 
+    }
+
+    private void button_level_click(){
+        Intent OptionActivity_intent = new Intent(LevelActivity.this , OptionActivity.class);
+
+        Bundle extras = new Bundle();
+        extras.putString("EXTRA_USERNAME",username);
+        extras.putString("EXTRA_AGE",String.valueOf(age));
+        OptionActivity_intent.putExtras(extras);
+
+        startActivity(OptionActivity_intent);
     }
 }

@@ -5,8 +5,14 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.TextView;
 
 public class OptionActivity extends AppCompatActivity {
+
+    String username;
+    int age;
+    TextView username_display;
+    TextView age_display;
 
     Button write_button;
     Button vocabulary_button;
@@ -19,6 +25,16 @@ public class OptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
 
+        //getting extras
+        Bundle extras = getIntent().getExtras();
+        username = extras.getString("EXTRA_USERNAME");
+        age = Integer.valueOf(extras.getString("EXTRA_AGE"));
+
+        username_display = (TextView)findViewById(R.id.username_textview);
+        age_display = (TextView)findViewById(R.id.userage_textview);
+
+        username_display.setText(username);
+        age_display.setText(String.valueOf(age));
 
         write_button = (Button) findViewById(R.id.write_button);
         write_button.setOnClickListener(new View.OnClickListener() {
