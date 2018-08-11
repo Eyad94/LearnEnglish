@@ -11,7 +11,7 @@ public class MainActivity extends AppCompatActivity {
 
     String username;
     int age;
-    EditText name_input;
+    EditText username_input;
     EditText age_input;
     Button button_go;
 
@@ -21,19 +21,23 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        name_input = (EditText)findViewById(R.id.txt_name);
+        username_input = (EditText)findViewById(R.id.txt_name);
         age_input = (EditText)findViewById(R.id.txt_age);
         button_go = (Button)findViewById(R.id.btn_go);
 
         button_go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                /*
-                username = name_input.getText().toString();
+                username = username_input.getText().toString();
                 age = Integer.valueOf(age_input.getText().toString());
-*/
-                Intent intent = new Intent(MainActivity.this, LevelActivity.class);
-                startActivity(intent);
+                Intent LevelActivity_intent = new Intent(MainActivity.this, LevelActivity.class);
+
+                Bundle extras = new Bundle();
+                extras.putString("EXTRA_USERNAME",username);
+                extras.putString("EXTRA_AGE",String.valueOf(age));
+                LevelActivity_intent.putExtras(extras);
+
+                startActivity(LevelActivity_intent);
             }
         });
     }

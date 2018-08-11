@@ -5,10 +5,11 @@
     <string name="name">Name</string>
     <string name="age">Age</string>
 
-    <string name="textlevel">בחר את רמת האנגלית </string>
-    <string name="basis_button">בסיסי</string>
-    <string name="advanced_level_a"> מתקדמים א</string>
-    <string name="advanced_level_b"> מתקדמים ב</string>
+    <string name="level">בחר את רמת האנגלית </string>
+
+    <string name="beginners">מתחילים</string>
+    <string name="basis">בסיסי</string>
+    <string name="advanced"> מתקדמים</string>
 
 
     <string name="write_button" />
