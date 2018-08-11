@@ -1,0 +1,55 @@
+{
+  "project_info": {
+    "project_number": "408050170742",
+    "firebase_url": "https://learnenglish-9a130.firebaseio.com",
+    "project_id": "learnenglish-9a130",
+    "storage_bucket": "learnenglish-9a130.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:408050170742:android:9215d69a28febb77",
+        "android_client_info": {
+          "package_name": "com.afeka.learnenglish"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "408050170742-g286hg3nadpilscb5ufd0ev49etsmagc.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.afeka.learnenglish",
+            "certificate_hash": "4927e18ab572707e38bbbbfefff6fcf6ee3d1d94"
+          }
+        },
+        {
+          "client_id": "408050170742-edf78pi8992hcli6c4qig6fi5rtklrfa.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyC4h3dAqLIWTHKguuLBXctBJPqMjHHw1kE"
+        }
+      ],
+      "services": {
+        "analytics_service": {
+          "status": 1
+        },
+        "appinvite_service": {
+          "status": 2,
+          "other_platform_oauth_client": [
+            {
+              "client_id": "408050170742-edf78pi8992hcli6c4qig6fi5rtklrfa.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        },
+        "ads_service": {
+          "status": 2
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
