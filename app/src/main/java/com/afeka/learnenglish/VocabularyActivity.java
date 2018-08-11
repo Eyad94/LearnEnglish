@@ -1,6 +1,7 @@
 package com.afeka.learnenglish;
 
-import android.content.Intent;
+import android.support.annotation.NonNull;
+import android.support.annotation.Nullable;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,7 +9,21 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.google.firebase.database.ChildEventListener;
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
+
 public class VocabularyActivity extends AppCompatActivity {
+
+    DatabaseReference mDatabase;
+    ArrayList<String> words_list = new ArrayList<>();
+    ArrayList<String> meanings_list = new ArrayList<>();
+
 
     String word;
     String option_1;
@@ -31,6 +46,22 @@ public class VocabularyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vocabulary);
 
+
+        /*
+        mDatabase = FirebaseDatabase.getInstance().getReference("words");
+        mDatabase.addChildEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                String value = dataSnapshot.getValue(String.class);
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+                throw databaseError.toException();
+            }
+        });
+
+*/
 
         word = "rooms";
         option_1 = "בית משפט";
