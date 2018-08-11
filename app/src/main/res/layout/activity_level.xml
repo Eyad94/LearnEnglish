@@ -1,0 +1,53 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    tools:context=".LevelActivity">
+
+
+    <TextView
+        android:id="@+id/text_level"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="33dp"
+        android:text="@string/textlevel"
+        android:textColor="@android:color/background_dark"
+        android:textColorHighlight="@android:color/black"
+        android:textSize="24sp"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/button_basis"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/advanced_a"
+        android:layout_below="@+id/text_level"
+        android:layout_marginTop="58dp"
+        android:text="@string/basis_button"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/advanced_a"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/advanced_level_a"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/advanced_b"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/advanced_a"
+        android:layout_below="@+id/advanced_a"
+        android:layout_marginTop="61dp"
+        android:text="@string/advanced_level_b"
+        android:textStyle="bold" />
+
+
+</RelativeLayout>

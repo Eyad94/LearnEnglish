@@ -1,0 +1,111 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:background="@drawable/background_gradient"
+    tools:context=".OptionActivity">
+
+
+    <Button
+        android:id="@+id/write_button"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_alignParentStart="true"
+        android:layout_below="@+id/vocabulary_button"
+        android:layout_marginStart="42dp"
+        android:layout_marginTop="76dp"
+        android:background="@drawable/write_pic70"
+        android:text="@string/write_button" />
+
+
+    <TextView
+        android:id="@+id/writing_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/write_button"
+        android:layout_below="@+id/write_button"
+        android:layout_marginTop="24dp"
+        android:text="@string/textview_writing"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/vocabulary_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="55dp"
+        android:background="@drawable/vocabulary70"
+        android:text="@string/vocabulary_button" />
+
+    <TextView
+        android:id="@+id/vocabulary_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/vocabulary_button"
+        android:layout_below="@+id/vocabulary_button"
+        android:layout_marginEnd="11dp"
+        android:layout_marginTop="15dp"
+        android:text="@string/textview_vocabulary"
+        android:textStyle="bold" />
+
+
+    <Button
+        android:id="@+id/word_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignStart="@+id/writing_textView"
+        android:layout_below="@+id/writing_textView"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/word70"
+        android:text="@string/button_word" />
+
+    <TextView
+        android:id="@+id/word_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignEnd="@+id/write_button"
+        android:layout_below="@+id/word_button"
+        android:layout_marginTop="19dp"
+        android:text="@string/textview_word"
+        android:textStyle="bold" />
+
+    <Button
+        android:id="@+id/grammar_button"
+        android:layout_width="70dp"
+        android:layout_height="70dp"
+        android:layout_alignParentEnd="true"
+        android:layout_alignTop="@+id/write_button"
+        android:layout_marginEnd="31dp"
+        android:background="@drawable/grammar70"
+        android:text="@string/button_grammar" />
+
+    <TextView
+        android:id="@+id/grammar_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_above="@+id/word_button"
+        android:layout_alignEnd="@+id/grammar_button"
+        android:layout_marginEnd="15dp"
+        android:text="@string/textview_grammar" />
+
+    <Button
+        android:id="@+id/listening_comprehension_button"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/word_button"
+        android:layout_alignEnd="@+id/grammar_button"
+        android:background="@drawable/listening_comprehension70"
+        android:text="@string/listening_comprehension_button" />
+
+    <TextView
+        android:id="@+id/textView6"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_alignBottom="@+id/word_textView"
+        android:layout_alignEnd="@+id/listening_comprehension_button"
+        android:text="@string/listening_comprehension_textview" />
+
+</RelativeLayout>
