@@ -45,8 +45,26 @@ public class VocabularyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vocabulary);
 
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("words");
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot wordSnapshot : dataSnapshot.getChildren()){
+                    String wordkey = wordSnapshot.getKey();
+                    String wordValue = wordSnapshot.getValue(String.class);
+                    Toast.makeText(VocabularyActivity.this, wordkey + "  " +wordValue, Toast.LENGTH_SHORT).show();
+                }
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
 
 
+
+/*
         mDatabase = FirebaseDatabase.getInstance().getReference().child("words");
         mDatabase.child("I am").addListenerForSingleValueEvent(new ValueEventListener() {
             @Override
@@ -59,6 +77,7 @@ public class VocabularyActivity extends AppCompatActivity {
             public void onCancelled(DatabaseError databaseError) {
             }
         });
+*/
 
 
 
