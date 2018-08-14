@@ -290,7 +290,7 @@ tools:context=".PictureActivity">
     </android.support.constraint.ConstraintLayout>
 
     <TextView
-        android:id="@+id/word_textView"
+        android:id="@+id/word_in_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
