@@ -43,7 +43,7 @@ public class VocabularyActivity extends AppCompatActivity {
         setContentView(R.layout.activity_vocabulary);
 
 
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("words");
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("words").child("Beginners");
         mDatabase.addValueEventListener(new ValueEventListener() {
             @Override
             public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
