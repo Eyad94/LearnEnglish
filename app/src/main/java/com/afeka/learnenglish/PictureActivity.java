@@ -14,7 +14,8 @@ import java.util.Random;
 
 public class PictureActivity extends AppCompatActivity {
 
-
+    TextView username_display;
+    String username;
     ImageView imageView;
 
     char button_1;
@@ -53,6 +54,13 @@ public class PictureActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture);
+
+        //getting extras
+        Bundle extras = getIntent().getExtras();
+        username = extras.getString("EXTRA_USERNAME");
+
+        username_display = findViewById(R.id.username_pic_textview);
+        username_display.setText(username);
 
 
         imageView = findViewById(R.id.image);

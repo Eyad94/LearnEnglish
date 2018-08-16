@@ -33,7 +33,7 @@ tools:context=".PictureActivity">
         android:textSize="20dp" />
 
     <TextView
-        android:id="@+id/username_e_textview"
+        android:id="@+id/username_pic_textview"
         android:layout_width="wrap_content"
         android:layout_height="match_parent"
         android:text="*username*"
