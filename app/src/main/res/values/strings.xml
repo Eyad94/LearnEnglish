@@ -11,17 +11,12 @@
     <string name="basis">בסיסי</string>
     <string name="advanced"> מתקדמים</string>
 
-
-    <string name="write_button" />
     <string name="vocabulary_button" />
     <string name="textview_vocabulary">אוצר מילים</string>
-    <string name="textview_writing">כתיבת מילים</string>
-    <string name="button_word" />
+    <string name="textview_picture">מילה בתמונה</string>
     <string name="textview_word">מילה במשבצת</string>
-    <string name="button_grammar" />
     <string name="textview_grammar">דקדוק</string>
-    <string name="listening_comprehension_button" />
-    <string name="listening_comprehension_textview">הבנת הנשמע</string>
+
 
     <string name="oxford_guide_to_english_grammar">oxford guide to english grammar</string>
     <string name="basics_of_english_grammar">Basics of English Grammar</string>

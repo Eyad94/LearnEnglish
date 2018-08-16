@@ -48,7 +48,7 @@ public class MainActivity extends AppCompatActivity {
         Intent LevelActivity_intent = new Intent(this, LevelActivity.class);
         Bundle extras = new Bundle();
         extras.putString("EXTRA_USERNAME",username);
-        extras.putString("EXTRA_AGE",String.valueOf(age));
+        //extras.putString("EXTRA_AGE",String.valueOf(age));
         LevelActivity_intent.putExtras(extras);
 
         startActivity(LevelActivity_intent);

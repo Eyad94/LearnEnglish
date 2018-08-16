@@ -9,158 +9,160 @@
 
 
     <LinearLayout
-        android:id="@+id/linearLayout"
-        android:layout_width="match_parent"
+        android:id="@+id/linearLayout1"
+        android:layout_width="172dp"
         android:layout_height="30dp"
         android:layout_marginBottom="8dp"
-        android:layout_marginEnd="4dp"
-        android:layout_marginStart="4dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
         android:background="#6897bb"
         android:orientation="horizontal"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.007"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="0.017">
 
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
-            android:text="User: "
+            android:text=" Points: "
             android:textColor="#ffff"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
 
         <TextView
-            android:id="@+id/username_textview"
+            android:id="@+id/points_opt_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="00"
+            android:textColor="#ffff"
+            android:textSize="20sp" />
+    </LinearLayout>
+
+
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="172dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#6897bb"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.96"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.017">
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text=" User: "
+            android:textColor="#ffff"
+            android:textSize="20sp" />
+
+        <TextView
+            android:id="@+id/username_opt_textview"
             android:layout_width="wrap_content"
             android:layout_height="match_parent"
             android:text="*username*"
             android:textColor="#ffff"
-            android:textSize="20dp" />
-
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="         Age: "
-            android:textColor="#ffff"
-            android:textSize="20dp" />
-
-        <TextView
-            android:id="@+id/userage_textview"
-            android:layout_width="wrap_content"
-            android:layout_height="match_parent"
-            android:text="*00*"
-            android:textColor="#ffff"
-            android:textSize="20dp" />
+            android:textSize="20sp" />
     </LinearLayout>
 
+    <Button
+        android:id="@+id/vocabulary_button"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/logo_vocabulary"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
 
-    <RelativeLayout
-        android:layout_width="match_parent"
-        android:layout_height="match_parent">
+    <Button
+        android:id="@+id/picture_button"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/logo_image"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/vocabulary_button"
+        app:layout_constraintTop_toBottomOf="@+id/linearLayout2" />
 
-        <Button
-            android:id="@+id/write_button"
-            android:layout_width="60dp"
-            android:layout_height="60dp"
-            android:layout_alignParentStart="true"
-            android:layout_below="@+id/vocabulary_button"
-            android:layout_marginStart="42dp"
-            android:layout_marginTop="76dp"
-            android:background="@drawable/write_pic70"
-            android:text="@string/write_button" />
+    <TextView
+        android:id="@+id/vocabulary_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="56dp"
+        android:layout_marginTop="7dp"
+        android:text="@string/textview_vocabulary"
+        android:textAlignment="center"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vocabulary_button" />
 
-        <TextView
-            android:id="@+id/writing_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/write_button"
-            android:layout_below="@+id/write_button"
-            android:layout_marginTop="24dp"
-            android:text="@string/textview_writing"
-            android:textStyle="bold" />
+    <TextView
+        android:id="@+id/picture_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="50dp"
+        android:layout_marginTop="7dp"
+        android:text="@string/textview_picture"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/picture_button" />
 
-        <Button
-            android:id="@+id/vocabulary_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentTop="true"
-            android:layout_centerHorizontal="true"
-            android:layout_marginTop="55dp"
-            android:background="@drawable/vocabulary70"
-            android:text="@string/vocabulary_button" />
+    <Button
+        android:id="@+id/word_button"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginStart="35dp"
+        android:layout_marginTop="53dp"
+        android:background="@drawable/logo_words"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/vocabulary_textView" />
 
-        <TextView
-            android:id="@+id/vocabulary_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/vocabulary_button"
-            android:layout_below="@+id/vocabulary_button"
-            android:layout_marginEnd="11dp"
-            android:layout_marginTop="15dp"
-            android:text="@string/textview_vocabulary"
-            android:textStyle="bold" />
+    <Button
+        android:id="@+id/grammar_button"
+        android:layout_width="120dp"
+        android:layout_height="120dp"
+        android:layout_marginEnd="35dp"
+        android:layout_marginStart="50dp"
+        android:layout_marginTop="50dp"
+        android:background="@drawable/logo_grammar"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toEndOf="@+id/word_button"
+        app:layout_constraintTop_toBottomOf="@+id/picture_textView" />
 
+    <TextView
+        android:id="@+id/grammar_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="70dp"
+        android:layout_marginTop="7dp"
+        android:text="@string/textview_grammar"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/grammar_button" />
 
-        <Button
-            android:id="@+id/word_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignStart="@+id/writing_textView"
-            android:layout_below="@+id/writing_textView"
-            android:layout_marginTop="50dp"
-            android:background="@drawable/word70"
-            android:text="@string/button_word" />
-
-        <TextView
-            android:id="@+id/word_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignEnd="@+id/write_button"
-            android:layout_below="@+id/word_button"
-            android:layout_marginTop="19dp"
-            android:text="@string/textview_word"
-            android:textStyle="bold" />
-
-        <Button
-            android:id="@+id/grammar_button"
-            android:layout_width="70dp"
-            android:layout_height="70dp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignTop="@+id/write_button"
-            android:layout_marginEnd="31dp"
-            android:background="@drawable/grammar70"
-            android:text="@string/button_grammar" />
-
-        <TextView
-            android:id="@+id/grammar_textView"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_above="@+id/word_button"
-            android:layout_alignEnd="@+id/grammar_button"
-            android:layout_marginEnd="15dp"
-            android:text="@string/textview_grammar" />
-
-        <Button
-            android:id="@+id/listening_comprehension_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/word_button"
-            android:layout_alignEnd="@+id/grammar_button"
-            android:background="@drawable/listening_comprehension70"
-            android:text="@string/listening_comprehension_button" />
-
-        <TextView
-            android:id="@+id/textView6"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignBottom="@+id/word_textView"
-            android:layout_alignEnd="@+id/listening_comprehension_button"
-            android:text="@string/listening_comprehension_textview" />
-
-    </RelativeLayout>
+    <TextView
+        android:id="@+id/word_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="7dp"
+        android:text="@string/textview_word"
+        android:textSize="18sp"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/word_button" />
 
 
 </android.support.constraint.ConstraintLayout>
