@@ -53,12 +53,12 @@ public class PictureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture);
 
+
         imageView = findViewById(R.id.image);
         String url = "https://firebasestorage.googleapis.com/v0/b/learnenglish-9a130.appspot.com" +
                 "/o/cat.jpeg?alt=media&token=592363c1-d7df-4435-85b5-f591fb1d906d";
         AsyncImageView asyncImageView = new AsyncImageView(imageView);
         asyncImageView.loadUrl(url);
-
 
         word_textView = findViewById(R.id.word_in_textView);
         word_in_txt = "";
