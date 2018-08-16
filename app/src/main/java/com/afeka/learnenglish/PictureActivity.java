@@ -5,6 +5,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.util.Random;
@@ -12,6 +13,8 @@ import java.util.Random;
 
 public class PictureActivity extends AppCompatActivity {
 
+
+    ImageView imageView;
 
     char button_1;
     char button_2;
@@ -49,6 +52,13 @@ public class PictureActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture);
+
+        imageView = findViewById(R.id.image);
+        String url = "https://firebasestorage.googleapis.com/v0/b/learnenglish-9a130.appspot.com" +
+                "/o/cat.jpeg?alt=media&token=592363c1-d7df-4435-85b5-f591fb1d906d";
+        AsyncImageView asyncImageView = new AsyncImageView(imageView);
+        asyncImageView.loadUrl(url);
+
 
         word_textView = findViewById(R.id.word_in_textView);
         word_in_txt = "";
