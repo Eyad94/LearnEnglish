@@ -14,8 +14,9 @@ import java.util.Random;
 
 public class PictureActivity extends AppCompatActivity {
 
-    TextView username_display;
-    String username;
+    TextView points_textView;
+    int points;
+    String points_string;
     ImageView imageView;
 
     char button_1;
@@ -55,12 +56,10 @@ public class PictureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture);
 
-        //getting extras
-        Bundle extras = getIntent().getExtras();
-        username = extras.getString("EXTRA_USERNAME");
-
-        username_display = findViewById(R.id.username_pic_textview);
-        username_display.setText(username);
+        points = 0;
+        points_textView = findViewById(R.id.points_pic_textView);
+        points_string = points + "";
+        points_textView.setText(points_string);
 
 
         imageView = findViewById(R.id.image);
@@ -169,8 +168,13 @@ public class PictureActivity extends AppCompatActivity {
             word_textView.setText(word_in_txt);
             button.setEnabled(false);
             current_letter++;
-            if(current_letter >= word_of_picture.length())
+            if(current_letter >= word_of_picture.length()) {
                 current_letter = 0;                    //---------------------------------
+
+                points += 5;
+                points_string = points + "";
+                points_textView.setText(points_string);
+            }
         }
     }
 

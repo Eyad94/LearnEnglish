@@ -8,71 +8,72 @@ android:background="@drawable/background_gradient"
 tools:context=".PictureActivity">
 
 
-<LinearLayout
-    android:id="@+id/linearLayout2"
-    android:layout_width="172dp"
-    android:layout_height="30dp"
-    android:layout_marginBottom="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:background="#6897bb"
-    android:orientation="horizontal"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.96"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.017">
+    <LinearLayout
+        android:id="@+id/linearLayout2"
+        android:layout_width="172dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#6897bb"
+        android:orientation="horizontal"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.99"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.017">
 
-    <TextView
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text=" User: "
-        android:textColor="#ffff"
-        android:textSize="20dp" />
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text=" Points: "
+            android:textColor="#ffff"
+            android:textSize="20dp" />
 
-    <TextView
-        android:id="@+id/username_pic_textview"
-        android:layout_width="wrap_content"
-        android:layout_height="match_parent"
-        android:text="*username*"
-        android:textColor="#ffff"
-        android:textSize="20dp" />
-</LinearLayout>
+        <TextView
+            android:id="@+id/points_pic_textView"
+            android:layout_width="wrap_content"
+            android:layout_height="match_parent"
+            android:text="00"
+            android:textColor="#ffff"
+            android:textSize="20dp" />
+    </LinearLayout>
 
 
-<LinearLayout
-    android:layout_width="170dp"
-    android:layout_height="30dp"
-    android:layout_marginBottom="8dp"
-    android:layout_marginEnd="8dp"
-    android:layout_marginStart="8dp"
-    android:layout_marginTop="8dp"
-    android:orientation="vertical"
-    android:background="#6897bb"
-    app:layout_constraintBottom_toBottomOf="parent"
-    app:layout_constraintEnd_toEndOf="parent"
-    app:layout_constraintHorizontal_bias="0.02"
-    app:layout_constraintStart_toStartOf="parent"
-    app:layout_constraintTop_toTopOf="parent"
-    app:layout_constraintVertical_bias="0.017">
+    <LinearLayout
+        android:id="@+id/linearLayout1"
+        android:layout_width="170dp"
+        android:layout_height="30dp"
+        android:layout_marginBottom="8dp"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:background="#6897bb"
+        android:orientation="vertical"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.02"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.017">
 
-    <TextView
-        android:id="@+id/timer_textView"
-        android:layout_width="match_parent"
-        android:layout_height="wrap_content"
-        android:gravity="center"
-        android:text="00:00"
-        android:textColor="#ffff"
-        android:textSize="20dp" />
+        <TextView
+            android:id="@+id/timer_pic_textView"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:gravity="center"
+            android:text="00:00"
+            android:textColor="#ffff"
+            android:textSize="20dp" />
 
-</LinearLayout>
+    </LinearLayout>
 
     <ImageView
         android:id="@+id/image"
-        android:layout_width="250dp"
-        android:layout_height="250dp"
+        android:layout_width="280dp"
+        android:layout_height="280dp"
         android:layout_marginBottom="238dp"
         android:layout_marginEnd="67dp"
         android:layout_marginStart="67dp"
@@ -95,7 +96,7 @@ tools:context=".PictureActivity">
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/image"
-        app:layout_constraintVertical_bias="0.0">
+        app:layout_constraintVertical_bias="1.0">
 
 
         <Button
@@ -108,7 +109,6 @@ tools:context=".PictureActivity">
             android:layout_marginTop="8dp"
             android:background="@android:color/background_light"
             android:scaleType="centerCrop"
-            android:text="A"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -127,7 +127,6 @@ tools:context=".PictureActivity">
             android:layout_marginTop="8dp"
             android:background="@android:color/background_light"
             android:scaleType="centerCrop"
-            android:text="B"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -146,7 +145,6 @@ tools:context=".PictureActivity">
             android:layout_marginTop="8dp"
             android:background="@android:color/background_light"
             android:scaleType="centerCrop"
-            android:text="C"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -164,7 +162,6 @@ tools:context=".PictureActivity">
             android:layout_marginTop="8dp"
             android:background="@android:color/background_light"
             android:scaleType="centerCrop"
-            android:text="D"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -183,7 +180,6 @@ tools:context=".PictureActivity">
             android:layout_marginTop="8dp"
             android:background="@android:color/background_light"
             android:scaleType="centerCrop"
-            android:text="E"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -202,7 +198,6 @@ tools:context=".PictureActivity">
             android:layout_marginTop="8dp"
             android:background="@android:color/background_light"
             android:scaleType="centerCrop"
-            android:text="F"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -221,7 +216,6 @@ tools:context=".PictureActivity">
             android:layout_marginTop="8dp"
             android:background="@android:color/background_light"
             android:scaleType="centerCrop"
-            android:text="G"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -240,7 +234,6 @@ tools:context=".PictureActivity">
             android:layout_marginTop="8dp"
             android:background="@android:color/background_light"
             android:scaleType="centerCrop"
-            android:text="H"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -258,7 +251,6 @@ tools:context=".PictureActivity">
             android:layout_marginTop="8dp"
             android:background="@android:color/background_light"
             android:scaleType="centerCrop"
-            android:text="I"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -277,7 +269,6 @@ tools:context=".PictureActivity">
             android:layout_marginTop="8dp"
             android:background="@android:color/background_light"
             android:scaleType="centerCrop"
-            android:text="J"
             android:textSize="34sp"
             app:layout_constraintBottom_toBottomOf="parent"
             app:layout_constraintEnd_toEndOf="parent"
@@ -297,8 +288,7 @@ tools:context=".PictureActivity">
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
         android:layout_marginTop="8dp"
-        android:text="TextView"
-        android:textSize="20sp"
+        android:textSize="30sp"
         android:textStyle="bold"
         app:layout_constraintBottom_toTopOf="@+id/constraintLayout2"
         app:layout_constraintEnd_toEndOf="parent"
