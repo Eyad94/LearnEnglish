@@ -46,7 +46,6 @@ public class MainActivity extends AppCompatActivity {
         age = Integer.valueOf(age_input.getText().toString());
 
         Intent LevelActivity_intent = new Intent(this, LevelActivity.class);
-
         Bundle extras = new Bundle();
         extras.putString("EXTRA_USERNAME",username);
         extras.putString("EXTRA_AGE",String.valueOf(age));

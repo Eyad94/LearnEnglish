@@ -32,8 +32,13 @@ public class VocabularyActivity extends AppCompatActivity {
     Button option2_button;
     Button option3_button;
     Button option4_button;
+
     TextView word_textView;
+    TextView points_textView;
+    String points_string;
+
     int correct_answer_mum;
+    int points;
 
 
 
@@ -67,7 +72,13 @@ public class VocabularyActivity extends AppCompatActivity {
         option2_button = findViewById(R.id.button_option2);
         option3_button = findViewById(R.id.button_option3);
         option4_button = findViewById(R.id.button_option4);
+
         word_textView = findViewById(R.id.word_textView);
+        points_textView = findViewById(R.id.points_voc_textView);
+
+        points = 0;
+        points_string = points + "";
+        points_textView.setText(points_string);
 
 
         option1_button.setOnClickListener(new View.OnClickListener() {
@@ -167,8 +178,12 @@ public class VocabularyActivity extends AppCompatActivity {
     }
 
     private void check_answer(int num_answer_selected){
-        if(num_answer_selected == correct_answer_mum)
+        if(num_answer_selected == correct_answer_mum) {
+            points++;
+            points_string = points + "";
+            points_textView.setText(points_string);
             Toast.makeText(this, "Correct answer", Toast.LENGTH_SHORT).show();
+        }
         else
             Toast.makeText(this, "Incorrect answer", Toast.LENGTH_SHORT).show();
 
