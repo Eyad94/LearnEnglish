@@ -50,7 +50,7 @@ public class OptionActivity extends AppCompatActivity {
         });
 
 
-        vocabulary_button = (Button) findViewById(R.id.vocabulary_button);
+        vocabulary_button = findViewById(R.id.vocabulary_button);
         vocabulary_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -63,7 +63,7 @@ public class OptionActivity extends AppCompatActivity {
             }
         });
 
-        word_button = (Button) findViewById(R.id.word_button);
+        word_button = findViewById(R.id.word_button);
         word_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -76,7 +76,7 @@ public class OptionActivity extends AppCompatActivity {
             }
         });
 
-        grammar_button = (Button) findViewById(R.id.grammar_button);
+        grammar_button = findViewById(R.id.grammar_button);
         grammar_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -90,7 +90,7 @@ public class OptionActivity extends AppCompatActivity {
         });
 
 
-        listening_comprehension_button = (Button) findViewById(R.id.listening_comprehension_button);
+        listening_comprehension_button = findViewById(R.id.listening_comprehension_button);
         listening_comprehension_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {

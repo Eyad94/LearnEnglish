@@ -35,7 +35,9 @@ public class VocabularyActivity extends AppCompatActivity {
 
     TextView word_textView;
     TextView points_textView;
+    TextView username_display;
     String points_string;
+    String username;
 
     int correct_answer_mum;
     int points;
@@ -68,6 +70,10 @@ public class VocabularyActivity extends AppCompatActivity {
         });
 
 
+        //getting extras
+        Bundle extras = getIntent().getExtras();
+        username = extras.getString("EXTRA_USERNAME");
+
         option1_button = findViewById(R.id.button_option1);
         option2_button = findViewById(R.id.button_option2);
         option3_button = findViewById(R.id.button_option3);
@@ -75,6 +81,8 @@ public class VocabularyActivity extends AppCompatActivity {
 
         word_textView = findViewById(R.id.word_textView);
         points_textView = findViewById(R.id.points_voc_textView);
+        username_display = findViewById(R.id.username_voc_textview);
+        username_display.setText(username);
 
         points = 0;
         points_string = points + "";
