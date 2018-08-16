@@ -1,6 +1,7 @@
 package com.afeka.learnenglish;
 
 
+import android.annotation.SuppressLint;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -165,9 +166,10 @@ public class PictureActivity extends AppCompatActivity {
         }
     }
 
+    @SuppressLint("SetTextI18n")
     private void fill_letters_in_Buttons(){
         int[] leters_Button = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
-        int index, num;
+        int index;
 
         for(int i=0; i<length_of_word; i++) {
             index = rand.nextInt(10);
