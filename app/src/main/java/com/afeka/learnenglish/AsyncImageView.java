@@ -19,14 +19,6 @@ public class AsyncImageView {
         this.imageView = imgView;
     }
 
-
-
-    public AsyncImageView(ImageView imgView,String url){
-        this.imageView = imgView;
-        this.url = url;
-        getBitmapFromUrl();
-    }
-
     private void getBitmapFromUrl(){
         if (this.url == null)
             return;

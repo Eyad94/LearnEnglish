@@ -21,9 +21,9 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        username_input = (EditText)findViewById(R.id.txt_name);
-        age_input = (EditText)findViewById(R.id.txt_age);
-        button_go = (Button)findViewById(R.id.btn_go);
+        username_input = findViewById(R.id.txt_name);
+        age_input = findViewById(R.id.txt_age);
+        button_go = findViewById(R.id.btn_go);
 
         button_go.setOnClickListener(new View.OnClickListener() {
             @Override
