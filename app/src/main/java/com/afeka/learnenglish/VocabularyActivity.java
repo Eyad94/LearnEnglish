@@ -41,6 +41,8 @@ public class VocabularyActivity extends AppCompatActivity {
     int correct_answer_mum;
     int points;
 
+    String level_name;
+
 
 
     @Override
@@ -48,31 +50,13 @@ public class VocabularyActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_vocabulary);
 
-
-        mDatabase = FirebaseDatabase.getInstance().getReference().child("words").child("Beginners");
-        mDatabase.addValueEventListener(new ValueEventListener() {
-            @Override
-            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
-                for(DataSnapshot wordSnapshot : dataSnapshot.getChildren()){
-                    String word = wordSnapshot.getKey();
-                    String meaning = wordSnapshot.getValue(String.class);
-                    words_list.add(word);
-                    meanings_list.add(meaning);
-                }
-                new_question();
-            }
-
-            @Override
-            public void onCancelled(@NonNull DatabaseError databaseError) {
-
-            }
-        });
-
-
         //getting extras
         Bundle extras = getIntent().getExtras();
         username = extras.getString("EXTRA_USERNAME");
         points = extras.getInt("EXTRA_POINTS");
+        level_name = extras.getString("EXTRA_LEVEL");
+
+        get_words_from_server();
 
         option1_button = findViewById(R.id.button_option1);
         option2_button = findViewById(R.id.button_option2);
@@ -198,5 +182,26 @@ public class VocabularyActivity extends AppCompatActivity {
         new_question();
 
 
+    }
+
+    private void get_words_from_server(){
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("words").child(level_name);
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot wordSnapshot : dataSnapshot.getChildren()){
+                    String word = wordSnapshot.getKey();
+                    String meaning = wordSnapshot.getValue(String.class);
+                    words_list.add(word);
+                    meanings_list.add(meaning);
+                }
+                new_question();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
     }
 }

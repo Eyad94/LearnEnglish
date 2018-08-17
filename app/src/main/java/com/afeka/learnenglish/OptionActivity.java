@@ -20,6 +20,8 @@ public class OptionActivity extends AppCompatActivity {
     Button word_button;
     Button grammar_button;
 
+    String level_name;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -29,6 +31,7 @@ public class OptionActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         username = extras.getString("EXTRA_USERNAME");
         points = extras.getInt("EXTRA_POINTS");
+        level_name = extras.getString("EXTRA_LEVEL");
 
         username_textView = findViewById(R.id.username_opt_textview);
         points_textView = findViewById(R.id.points_opt_textView);
@@ -42,7 +45,8 @@ public class OptionActivity extends AppCompatActivity {
                 Intent write_intent = new Intent(OptionActivity.this, PictureActivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("EXTRA_USERNAME",username);
-               // extras.putString("EXTRA_AGE",String.valueOf(age));
+                extras.putInt("EXTRA_POINTS", points);
+                extras.putString("EXTRA_LEVEL",level_name);
                 write_intent.putExtras(extras);
                 startActivity(write_intent);
             }
@@ -57,6 +61,7 @@ public class OptionActivity extends AppCompatActivity {
                 Bundle extras = new Bundle();
                 extras.putString("EXTRA_USERNAME",username);
                 extras.putInt("EXTRA_POINTS", points);
+                extras.putString("EXTRA_LEVEL",level_name);
                 vocablary_intent.putExtras(extras);
                 startActivity(vocablary_intent);
             }
@@ -70,6 +75,7 @@ public class OptionActivity extends AppCompatActivity {
                 Bundle extras = new Bundle();
                 extras.putString("EXTRA_USERNAME",username);
                 extras.putInt("EXTRA_POINTS", points);
+                extras.putString("EXTRA_LEVEL",level_name);
                 word_intent.putExtras(extras);
                 startActivity(word_intent);
             }
@@ -83,6 +89,7 @@ public class OptionActivity extends AppCompatActivity {
                 Bundle extras = new Bundle();
                 extras.putString("EXTRA_USERNAME",username);
                 extras.putInt("EXTRA_POINTS", points);
+                extras.putString("EXTRA_LEVEL",level_name);
                 grammar_intent.putExtras(extras);
                 startActivity(grammar_intent);
             }
