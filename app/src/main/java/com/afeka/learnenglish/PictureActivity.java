@@ -16,7 +16,6 @@ public class PictureActivity extends AppCompatActivity {
 
     TextView points_textView;
     int points;
-    String points_string;
     ImageView imageView;
 
     char button_1;
@@ -56,10 +55,12 @@ public class PictureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture);
 
-        points = 0;
+        //getting extras
+        Bundle extras = getIntent().getExtras();
+        points = extras.getInt("EXTRA_POINTS");
+
         points_textView = findViewById(R.id.points_pic_textView);
-        points_string = points + "";
-        points_textView.setText(points_string);
+        points_textView.setText(String.valueOf(points));
 
 
         imageView = findViewById(R.id.image);
@@ -172,8 +173,7 @@ public class PictureActivity extends AppCompatActivity {
                 current_letter = 0;                    //---------------------------------
 
                 points += 5;
-                points_string = points + "";
-                points_textView.setText(points_string);
+                points_textView.setText(String.valueOf(points));
             }
         }
     }

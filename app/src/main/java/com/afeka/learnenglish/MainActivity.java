@@ -10,11 +10,10 @@ import android.widget.Toast;
 
 public class MainActivity extends AppCompatActivity {
 
-    String username;
-    int age;
+    String username;;
     EditText username_input;
-    EditText age_input;
     Button button_go;
+    int points;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -22,9 +21,10 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
 
 
-        username_input = findViewById(R.id.txt_name);
-        age_input = findViewById(R.id.txt_age);
-        button_go = findViewById(R.id.btn_go);
+        username_input = findViewById(R.id.name_editText);
+        button_go = findViewById(R.id.start_button);
+
+        points = 0;
 
         button_go.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -37,20 +37,18 @@ public class MainActivity extends AppCompatActivity {
 
     private void button_go_clicked(){
 
-        if (username_input.getText().length() == 0 || age_input.getText().length() == 0) {
-            Toast.makeText(MainActivity.this, "please fill all fields!!", Toast.LENGTH_SHORT).show();
+        if (username_input.getText().length() == 0 ) {
+            Toast.makeText(MainActivity.this, "please enter name!!", Toast.LENGTH_SHORT).show();
             return;
         }
 
         username = username_input.getText().toString();
-        age = Integer.valueOf(age_input.getText().toString());
 
         Intent LevelActivity_intent = new Intent(this, LevelActivity.class);
         Bundle extras = new Bundle();
         extras.putString("EXTRA_USERNAME",username);
-        //extras.putString("EXTRA_AGE",String.valueOf(age));
+        extras.putInt("EXTRA_POINTS", points);
         LevelActivity_intent.putExtras(extras);
-
         startActivity(LevelActivity_intent);
     }
 }

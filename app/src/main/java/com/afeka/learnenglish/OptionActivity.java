@@ -10,18 +10,15 @@ import android.widget.TextView;
 public class OptionActivity extends AppCompatActivity {
 
     String username;
-    //int age = 10;
-    TextView username_display;
+    TextView username_textView;
 
     TextView points_textView;
-    String points_string;
     int points;
 
     Button write_button;
     Button vocabulary_button;
     Button word_button;
     Button grammar_button;
-    //Button listening_comprehension_button;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -31,14 +28,12 @@ public class OptionActivity extends AppCompatActivity {
         //getting extras
         Bundle extras = getIntent().getExtras();
         username = extras.getString("EXTRA_USERNAME");
+        points = extras.getInt("EXTRA_POINTS");
 
-        username_display = findViewById(R.id.username_opt_textview);
+        username_textView = findViewById(R.id.username_opt_textview);
         points_textView = findViewById(R.id.points_opt_textView);
-        username_display.setText(username);
-
-        points = 0;
-        points_string = points + "";
-        points_textView.setText(points_string);
+        username_textView.setText(username);
+        points_textView.setText(String.valueOf(points));
 
         write_button = findViewById(R.id.picture_button);
         write_button.setOnClickListener(new View.OnClickListener() {
@@ -61,7 +56,7 @@ public class OptionActivity extends AppCompatActivity {
                 Intent vocablary_intent = new Intent(OptionActivity.this, VocabularyActivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("EXTRA_USERNAME",username);
-                //extras.putString("EXTRA_AGE",String.valueOf(age));
+                extras.putInt("EXTRA_POINTS", points);
                 vocablary_intent.putExtras(extras);
                 startActivity(vocablary_intent);
             }
@@ -74,7 +69,7 @@ public class OptionActivity extends AppCompatActivity {
                 Intent word_intent = new Intent(OptionActivity.this, WordActivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("EXTRA_USERNAME",username);
-                //extras.putString("EXTRA_AGE",String.valueOf(age));
+                extras.putInt("EXTRA_POINTS", points);
                 word_intent.putExtras(extras);
                 startActivity(word_intent);
             }
@@ -87,26 +82,11 @@ public class OptionActivity extends AppCompatActivity {
                 Intent grammar_intent = new Intent(OptionActivity.this, GrammarActivity.class);
                 Bundle extras = new Bundle();
                 extras.putString("EXTRA_USERNAME",username);
-                //extras.putString("EXTRA_AGE",String.valueOf(age));
+                extras.putInt("EXTRA_POINTS", points);
                 grammar_intent.putExtras(extras);
                 startActivity(grammar_intent);
             }
         });
 
-
-        /*
-        listening_comprehension_button = findViewById(R.id.listening_comprehension_button);
-        listening_comprehension_button.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View view) {
-                Intent listen_intent = new Intent(OptionActivity.this, ListeningComprehensionActivity.class);
-                Bundle extras = new Bundle();
-                extras.putString("EXTRA_USERNAME",username);
-                extras.putString("EXTRA_AGE",String.valueOf(age));
-                listen_intent.putExtras(extras);
-                startActivity(listen_intent);
-            }
-        });
-*/
     }
 }

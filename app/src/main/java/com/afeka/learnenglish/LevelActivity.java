@@ -10,9 +10,9 @@ import android.widget.TextView;
 public class LevelActivity extends AppCompatActivity {
 
     String username;
-    //int age;
-    TextView username_display;
-    TextView age_display;
+    int points;
+    TextView username_textView;
+    TextView points_textView;
 
     Button button_basis;
     Button button_beginners;
@@ -26,17 +26,17 @@ public class LevelActivity extends AppCompatActivity {
         //getting extras
         Bundle extras = getIntent().getExtras();
         username = extras.getString("EXTRA_USERNAME");
-       // age = Integer.valueOf(extras.getString("EXTRA_AGE"));
+        points = extras.getInt("EXTRA_POINTS");
 
-        username_display = (TextView)findViewById(R.id.username_textview);
-       // age_display = (TextView)findViewById(R.id.userage_textview);
+        username_textView = findViewById(R.id.username_lev_textview);
+        points_textView = findViewById(R.id.points_lev_textView);
 
-        username_display.setText(username);
-        //age_display.setText(String.valueOf(age));
+        username_textView.setText(username);
+        points_textView.setText(String.valueOf(points));
 
-        button_beginners = (Button) findViewById(R.id.button_beginners);
-        button_basis = (Button) findViewById(R.id.button_basis);
-        button_advanced = (Button) findViewById(R.id.button_advanced);
+        button_beginners = findViewById(R.id.button_beginners);
+        button_basis = findViewById(R.id.button_basis);
+        button_advanced = findViewById(R.id.button_advanced);
 
 
         button_basis.setOnClickListener(new View.OnClickListener() {
@@ -68,7 +68,7 @@ public class LevelActivity extends AppCompatActivity {
 
         Bundle extras = new Bundle();
         extras.putString("EXTRA_USERNAME",username);
-        //extras.putString("EXTRA_AGE",String.valueOf(age));
+        extras.putInt("EXTRA_POINTS", points);
         OptionActivity_intent.putExtras(extras);
 
         startActivity(OptionActivity_intent);

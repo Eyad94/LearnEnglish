@@ -14,8 +14,6 @@ public class WordActivity extends AppCompatActivity {
 
     TextView points_textView;
     int points;
-    String points_string;
-    ImageView imageView;
 
     Random rand = new Random();
     char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m',
@@ -41,10 +39,13 @@ public class WordActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_word);
 
-        points = 0;
+
+        //getting extras
+        Bundle extras = getIntent().getExtras();
+        points = extras.getInt("EXTRA_POINTS");
+
         points_textView = findViewById(R.id.points_word_textView);
-        points_string = points + "";
-        points_textView.setText(points_string);
+        points_textView.setText(String.valueOf(points));
 
         word_textView = findViewById(R.id.word_hebrew_txt);
         word_in_hebrew = "כן";
@@ -344,8 +345,7 @@ public class WordActivity extends AppCompatActivity {
                 current_letter = 0;                    //---------------------------------
 
                 points += 10;
-                points_string = points + "";
-                points_textView.setText(points_string);
+                points_textView.setText(String.valueOf(points));
             }
         }
     }

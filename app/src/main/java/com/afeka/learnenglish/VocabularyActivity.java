@@ -36,7 +36,6 @@ public class VocabularyActivity extends AppCompatActivity {
     TextView word_textView;
     TextView points_textView;
     TextView username_display;
-    String points_string;
     String username;
 
     int correct_answer_mum;
@@ -73,6 +72,7 @@ public class VocabularyActivity extends AppCompatActivity {
         //getting extras
         Bundle extras = getIntent().getExtras();
         username = extras.getString("EXTRA_USERNAME");
+        points = extras.getInt("EXTRA_POINTS");
 
         option1_button = findViewById(R.id.button_option1);
         option2_button = findViewById(R.id.button_option2);
@@ -83,10 +83,7 @@ public class VocabularyActivity extends AppCompatActivity {
         points_textView = findViewById(R.id.points_voc_textView);
         username_display = findViewById(R.id.username_voc_textview);
         username_display.setText(username);
-
-        points = 0;
-        points_string = points + "";
-        points_textView.setText(points_string);
+        points_textView.setText(String.valueOf(points));
 
 
         option1_button.setOnClickListener(new View.OnClickListener() {
@@ -188,8 +185,7 @@ public class VocabularyActivity extends AppCompatActivity {
     private void check_answer(int num_answer_selected){
         if(num_answer_selected == correct_answer_mum) {
             points++;
-            points_string = points + "";
-            points_textView.setText(points_string);
+            points_textView.setText(String.valueOf(points));
             Toast.makeText(this, "Correct answer", Toast.LENGTH_SHORT).show();
         }
         else
