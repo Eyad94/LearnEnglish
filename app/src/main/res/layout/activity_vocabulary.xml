@@ -100,37 +100,37 @@
         <Button
             android:id="@+id/button_option1"
             android:layout_width="220dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginTop="10dp"
-            android:background="#81d8d0"
+            android:background="@drawable/button_background"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/button_option2"
             android:layout_width="220dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:background="#81d8d0"
+            android:background="@drawable/button_background"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/button_option3"
             android:layout_width="220dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:background="#81d8d0"
+            android:background="@drawable/button_background"
             android:textSize="20sp" />
 
         <Button
             android:id="@+id/button_option4"
             android:layout_width="220dp"
-            android:layout_height="40dp"
+            android:layout_height="45dp"
             android:layout_gravity="center"
             android:layout_marginTop="15dp"
-            android:background="#81d8d0"
+            android:background="@drawable/button_background"
             android:textSize="20sp" />
 
     </LinearLayout>
