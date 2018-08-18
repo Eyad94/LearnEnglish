@@ -1,6 +1,7 @@
 package com.afeka.learnenglish;
 
 import android.annotation.SuppressLint;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -8,13 +9,24 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 public class WordActivity extends AppCompatActivity {
 
+    DatabaseReference mDatabase;
+    ArrayList<String> words_list = new ArrayList<>();
+    ArrayList<String> meanings_list = new ArrayList<>();
+    TextView word_textView;
     TextView points_textView;
     int points;
-
+    String level_name;
     Random rand = new Random();
     char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m',
             'n','o','p','q','r','s','t','u','v','w','x','y','z'};
@@ -22,6 +34,7 @@ public class WordActivity extends AppCompatActivity {
     String meaning_in_english;
     int length_of_meaning;
     int current_letter = 0;
+    int current_question_index = 0;
 
     char button_1, button_2, button_3, button_4, button_5, button_6, button_7, button_8;
     char button_9, button_10, button_11, button_12, button_13, button_14, button_15, button_16;
@@ -31,7 +44,7 @@ public class WordActivity extends AppCompatActivity {
     Button l_button11, l_button12, l_button13, l_button14, l_button15, l_button16, l_button17, l_button18, l_button19;
     Button l_button20, l_button21, l_button22, l_button23, l_button24, l_button25;
 
-    TextView word_textView;
+
 
 
     @Override
@@ -43,15 +56,12 @@ public class WordActivity extends AppCompatActivity {
         //getting extras
         Bundle extras = getIntent().getExtras();
         points = extras.getInt("EXTRA_POINTS");
+        level_name = extras.getString("EXTRA_LEVEL");
 
         points_textView = findViewById(R.id.points_word_textView);
         points_textView.setText(String.valueOf(points));
 
         word_textView = findViewById(R.id.word_hebrew_txt);
-        word_in_hebrew = "כן";
-        word_textView.setText(word_in_hebrew);
-        meaning_in_english = "yes";
-        length_of_meaning = meaning_in_english.length();
 
 
         l_button1 = findViewById(R.id.letter_button1);
@@ -80,7 +90,8 @@ public class WordActivity extends AppCompatActivity {
         l_button24 = findViewById(R.id.letter_button24);
         l_button25 = findViewById(R.id.letter_button25);
 
-        fill_letters_in_Buttons();
+
+        get_words_from_server();
 
         //buttons clicked
         l_button1.setOnClickListener(new View.OnClickListener() {
@@ -259,6 +270,7 @@ public class WordActivity extends AppCompatActivity {
         });
     }
 
+
     @SuppressLint("SetTextI18n")
     private void fill_letters_in_Buttons(){
         int[] leters_Button = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
@@ -330,6 +342,7 @@ public class WordActivity extends AppCompatActivity {
         l_button25.setText(button_25 + "");
     }
 
+
     private int index_of_char(char ch){
         for (int i=0; i<alphabet.length; i++)
             if(ch == alphabet[i])
@@ -337,16 +350,57 @@ public class WordActivity extends AppCompatActivity {
         return -1;
     }
 
+
     private void check_letter_correct(char letter, Button button){
         if(letter == meaning_in_english.charAt(current_letter)){
             button.setEnabled(false);
             current_letter++;
             if(current_letter >= meaning_in_english.length()) {
                 current_letter = 0;                    //---------------------------------
-
                 points += 10;
                 points_textView.setText(String.valueOf(points));
+                new_question();
             }
         }
+    }
+
+
+    private void get_words_from_server(){
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("words").child(level_name);
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot wordSnapshot : dataSnapshot.getChildren()){
+                    String word = wordSnapshot.getKey();
+                    String meaning = wordSnapshot.getValue(String.class);
+                    words_list.add(word);
+                    meanings_list.add(meaning);
+                }
+                new_question();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+    private void new_question(){
+        if(words_list.size() == 0)
+            return;
+        if(current_question_index >= words_list.size())
+            current_question_index = 0;
+
+        word_in_hebrew = meanings_list.get(current_question_index);
+        word_textView.setText(word_in_hebrew);
+
+        meaning_in_english = words_list.get(current_question_index);
+        length_of_meaning = meaning_in_english.length();
+
+        current_question_index++;
+
+        fill_letters_in_Buttons();
     }
 }
