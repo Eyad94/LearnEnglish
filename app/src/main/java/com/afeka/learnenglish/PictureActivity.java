@@ -2,6 +2,7 @@ package com.afeka.learnenglish;
 
 
 import android.annotation.SuppressLint;
+import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,10 +10,21 @@ import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
 
+import com.google.firebase.database.DataSnapshot;
+import com.google.firebase.database.DatabaseError;
+import com.google.firebase.database.DatabaseReference;
+import com.google.firebase.database.FirebaseDatabase;
+import com.google.firebase.database.ValueEventListener;
+
+import java.util.ArrayList;
 import java.util.Random;
 
 
 public class PictureActivity extends AppCompatActivity {
+
+    DatabaseReference mDatabase;
+    ArrayList<String> names_of_pictures = new ArrayList<>();
+    ArrayList<String> url_of_pictures = new ArrayList<>();
 
     TextView points_textView;
     int points;
@@ -29,11 +41,13 @@ public class PictureActivity extends AppCompatActivity {
     char button_9;
     char button_10;
 
+    String level_name;
     String word_in_txt;
     TextView word_textView;
     String word_of_picture;
     int length_of_word;
     int current_letter = 0;
+    int current_question_index = 0;
 
     Button button1;
     Button button2;
@@ -58,16 +72,12 @@ public class PictureActivity extends AppCompatActivity {
         //getting extras
         Bundle extras = getIntent().getExtras();
         points = extras.getInt("EXTRA_POINTS");
+        level_name = extras.getString("EXTRA_LEVEL");
 
         points_textView = findViewById(R.id.points_pic_textView);
         points_textView.setText(String.valueOf(points));
 
-
         imageView = findViewById(R.id.image);
-        String url = "https://firebasestorage.googleapis.com/v0/b/learnenglish-9a130.appspot.com" +
-                "/o/cat.jpeg?alt=media&token=592363c1-d7df-4435-85b5-f591fb1d906d";
-        AsyncImageView asyncImageView = new AsyncImageView(imageView);
-        asyncImageView.loadUrl(url);
 
         word_textView = findViewById(R.id.word_in_textView);
         word_in_txt = "";
@@ -84,10 +94,7 @@ public class PictureActivity extends AppCompatActivity {
         button9 = findViewById(R.id.button9);
         button10 = findViewById(R.id.button10);
 
-
-        word_of_picture = "cat";
-        length_of_word = word_of_picture.length();
-        fill_letters_in_Buttons();
+        get_pictures_from_server();
 
         //buttons clicked
         button1.setOnClickListener(new View.OnClickListener() {
@@ -169,11 +176,10 @@ public class PictureActivity extends AppCompatActivity {
             word_textView.setText(word_in_txt);
             button.setEnabled(false);
             current_letter++;
-            if(current_letter >= word_of_picture.length()) {
-                current_letter = 0;                    //---------------------------------
-
+            if(current_letter == word_of_picture.length()) {
                 points += 5;
                 points_textView.setText(String.valueOf(points));
+                new_question();
             }
         }
     }
@@ -224,5 +230,66 @@ public class PictureActivity extends AppCompatActivity {
             if(ch == alphabet[i])
                 return i;
         return -1;
+    }
+
+
+    private void get_pictures_from_server(){
+        mDatabase = FirebaseDatabase.getInstance().getReference().child("pictures").child(level_name);
+        mDatabase.addValueEventListener(new ValueEventListener() {
+            @Override
+            public void onDataChange(@NonNull DataSnapshot dataSnapshot) {
+                for(DataSnapshot wordSnapshot : dataSnapshot.getChildren()){
+                    String word = wordSnapshot.getKey();
+                    String meaning = wordSnapshot.getValue(String.class);
+                    names_of_pictures.add(word);
+                    url_of_pictures.add(meaning);
+                }
+                new_question();
+            }
+
+            @Override
+            public void onCancelled(@NonNull DatabaseError databaseError) {
+
+            }
+        });
+    }
+
+
+    private void new_question(){
+        if(names_of_pictures.size() == 0)
+            return;
+        if(current_question_index >= names_of_pictures.size())
+            current_question_index = 0;
+
+        word_in_txt = "";
+        word_textView.setText(word_in_txt);
+        current_letter = 0;
+        set_enable_buttons();
+
+        String url = url_of_pictures.get(current_question_index);
+        AsyncImageView asyncImageView = new AsyncImageView(imageView);
+        asyncImageView.loadUrl(url);
+
+
+        word_of_picture = names_of_pictures.get(current_question_index);
+        length_of_word = word_of_picture.length();
+        word_of_picture = word_of_picture.toLowerCase();
+
+        current_question_index++;
+        fill_letters_in_Buttons();
+    }
+
+
+    private void set_enable_buttons(){
+        button1.setEnabled(true);
+        button2.setEnabled(true);
+        button3.setEnabled(true);
+        button4.setEnabled(true);
+        button5.setEnabled(true);
+        button6.setEnabled(true);
+        button7.setEnabled(true);
+        button8.setEnabled(true);
+        button9.setEnabled(true);
+        button10.setEnabled(true);
     }
 }
