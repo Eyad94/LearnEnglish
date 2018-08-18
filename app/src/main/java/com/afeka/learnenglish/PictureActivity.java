@@ -266,17 +266,17 @@ public class PictureActivity extends AppCompatActivity {
         current_letter = 0;
         set_enable_buttons();
 
-        String url = url_of_pictures.get(current_question_index);
-        AsyncImageView asyncImageView = new AsyncImageView(imageView);
-        asyncImageView.loadUrl(url);
-
-
         word_of_picture = names_of_pictures.get(current_question_index);
         length_of_word = word_of_picture.length();
         word_of_picture = word_of_picture.toLowerCase();
 
-        current_question_index++;
         fill_letters_in_Buttons();
+
+        String url = url_of_pictures.get(current_question_index);
+        AsyncImageView asyncImageView = new AsyncImageView(imageView);
+        asyncImageView.loadUrl(url);
+
+        current_question_index++;
     }
 
 
