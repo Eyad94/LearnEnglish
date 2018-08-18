@@ -177,6 +177,13 @@ public class PictureActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onPause(){
+        super.onPause();
+        countDownTimer.cancel();
+    }
+
+
     private void check_letter_correct(char letter, Button button){
         if(letter == word_of_picture.charAt(current_letter)){
             word_in_txt += letter;
@@ -191,6 +198,7 @@ public class PictureActivity extends AppCompatActivity {
             }
         }
     }
+
 
     @SuppressLint("SetTextI18n")
     private void fill_letters_in_Buttons(){

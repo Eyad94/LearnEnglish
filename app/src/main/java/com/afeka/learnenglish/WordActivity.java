@@ -1,6 +1,7 @@
 package com.afeka.learnenglish;
 
 import android.annotation.SuppressLint;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -8,6 +9,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -25,6 +27,10 @@ public class WordActivity extends AppCompatActivity {
     ArrayList<String> meanings_list = new ArrayList<>();
     TextView word_textView;
     TextView points_textView;
+    TextView timer_display;
+
+    CountDownTimer countDownTimer;
+    int second_per_ques;
     int points;
     String level_name;
     Random rand = new Random();
@@ -60,7 +66,7 @@ public class WordActivity extends AppCompatActivity {
 
         points_textView = findViewById(R.id.points_word_textView);
         points_textView.setText(String.valueOf(points));
-
+        timer_display = findViewById(R.id.timer_word_textView);
         word_textView = findViewById(R.id.word_hebrew_txt);
 
 
@@ -271,6 +277,13 @@ public class WordActivity extends AppCompatActivity {
     }
 
 
+    @Override
+    protected void onPause(){
+        super.onPause();
+        countDownTimer.cancel();
+    }
+
+
     @SuppressLint("SetTextI18n")
     private void fill_letters_in_Buttons(){
         int[] leters_Button = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
@@ -358,6 +371,7 @@ public class WordActivity extends AppCompatActivity {
             if(current_letter == meaning_in_english.length()) {
                 points += 10;
                 points_textView.setText(String.valueOf(points));
+                countDownTimer.cancel();
                 new_question();
             }
         }
@@ -392,6 +406,7 @@ public class WordActivity extends AppCompatActivity {
         if(current_question_index >= words_list.size())
             current_question_index = 0;
 
+        start_count_down();
         current_letter = 0;
         set_enable_buttons();
         word_in_hebrew = meanings_list.get(current_question_index);
@@ -432,5 +447,36 @@ public class WordActivity extends AppCompatActivity {
         l_button23.setEnabled(true);
         l_button24.setEnabled(true);
         l_button25.setEnabled(true);
+    }
+
+
+    private void time_per_question(){
+        switch (level_name){
+            case "Beginners":
+                second_per_ques = 15;
+                break;
+            case "Basic":
+                second_per_ques = 10;
+                break;
+            case "Advanced":
+                second_per_ques = 8;
+                break;
+        }
+    }
+
+
+    //countdown timer
+    private void start_count_down(){
+        time_per_question();
+
+        countDownTimer = new CountDownTimer(1000 * second_per_ques, 1000) {
+            public void onTick(long millisUntilFinished) {
+                timer_display.setText("" + millisUntilFinished / 1000);
+            }
+            public void onFinish() {
+                Toast.makeText(getApplicationContext(), "You did not make it in time", Toast.LENGTH_LONG).show();
+                new_question();
+            }
+        }.start();
     }
 }
