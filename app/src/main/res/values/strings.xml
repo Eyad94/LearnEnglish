@@ -17,12 +17,4 @@
     <string name="textview_word">מילה במשבצת</string>
     <string name="textview_grammar">דקדוק</string>
 
-    <string name="learn_english_website"> Learn English </string>
-    <string name="basics_of_english_grammar">Basics of English Grammar</string>
-    <string name="oxford_guide_to_english_grammar">oxford guide to english grammar</string>
-
-
-    <string name="english_grammar_exercises">English Grammar Exercises </string>
-    <string name="grammar_text"> Websites</string>
-
 </resources>

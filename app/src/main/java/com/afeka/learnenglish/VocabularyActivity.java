@@ -169,11 +169,11 @@ public class VocabularyActivity extends AppCompatActivity {
         if(num_answer_selected == correct_answer_mum) {
             points++;
             points_textView.setText(String.valueOf(points));
-            Toast.makeText(this, "Correct answer", Toast.LENGTH_SHORT).show();
+           // Toast.makeText(this, "Correct answer", Toast.LENGTH_SHORT).show();
         }
-        else
-            Toast.makeText(this, "Incorrect answer", Toast.LENGTH_SHORT).show();
-
+        else {
+            //Toast.makeText(this, "Incorrect answer", Toast.LENGTH_SHORT).show();
+        }
         current_question_index++;
         if(current_question_index >= words_list.size())
             current_question_index = 0;
