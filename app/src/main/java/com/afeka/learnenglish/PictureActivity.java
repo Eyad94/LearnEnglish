@@ -2,6 +2,7 @@ package com.afeka.learnenglish;
 
 
 import android.annotation.SuppressLint;
+import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -9,6 +10,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageView;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
@@ -27,6 +29,7 @@ public class PictureActivity extends AppCompatActivity {
     ArrayList<String> url_of_pictures = new ArrayList<>();
 
     TextView points_textView;
+    TextView timer_display;
     int points;
     ImageView imageView;
 
@@ -60,6 +63,8 @@ public class PictureActivity extends AppCompatActivity {
     Button button9;
     Button button10;
 
+    CountDownTimer countDownTimer;
+    int second_per_ques;
     Random rand = new Random();
     char[] alphabet = {'a','b','c','d','e','f','g','h','i','j','k','l','m',
             'n','o','p','q','r','s','t','u','v','w','x','y','z'};
@@ -79,6 +84,7 @@ public class PictureActivity extends AppCompatActivity {
 
         imageView = findViewById(R.id.image);
 
+        timer_display = findViewById(R.id.timer_pic_textView);
         word_textView = findViewById(R.id.word_in_textView);
         word_in_txt = "";
         word_textView.setText(word_in_txt);
@@ -95,6 +101,7 @@ public class PictureActivity extends AppCompatActivity {
         button10 = findViewById(R.id.button10);
 
         get_pictures_from_server();
+
 
         //buttons clicked
         button1.setOnClickListener(new View.OnClickListener() {
@@ -179,6 +186,7 @@ public class PictureActivity extends AppCompatActivity {
             if(current_letter == word_of_picture.length()) {
                 points += 5;
                 points_textView.setText(String.valueOf(points));
+                countDownTimer.cancel();
                 new_question();
             }
         }
@@ -261,6 +269,7 @@ public class PictureActivity extends AppCompatActivity {
         if(current_question_index >= names_of_pictures.size())
             current_question_index = 0;
 
+        start_count_down();
         word_in_txt = "";
         word_textView.setText(word_in_txt);
         current_letter = 0;
@@ -292,4 +301,36 @@ public class PictureActivity extends AppCompatActivity {
         button9.setEnabled(true);
         button10.setEnabled(true);
     }
+
+
+    private void time_per_question(){
+        switch (level_name){
+            case "Beginners":
+                second_per_ques = 15;
+                break;
+            case "Basic":
+                second_per_ques = 10;
+                break;
+            case "Advanced":
+                second_per_ques = 8;
+                break;
+        }
+    }
+
+
+    //countdown timer
+    private void start_count_down(){
+        time_per_question();
+
+        countDownTimer = new CountDownTimer(1000 * second_per_ques, 1000) {
+            public void onTick(long millisUntilFinished) {
+                timer_display.setText("" + millisUntilFinished / 1000);
+            }
+            public void onFinish() {
+                Toast.makeText(getApplicationContext(), "You did not make it in time", Toast.LENGTH_LONG).show();
+                new_question();
+            }
+        }.start();
+    }
+
 }
