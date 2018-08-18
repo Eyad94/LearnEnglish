@@ -39,9 +39,10 @@ public class GrammarActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         username = extras.getString("EXTRA_USERNAME");
         points = extras.getInt("EXTRA_POINTS");
+        level_name = extras.getString("EXTRA_LEVEL");
 
-        username_textView = findViewById(R.id.username_lev_textview);
-        points_textView = findViewById(R.id.points_lev_textView);
+        username_textView = findViewById(R.id.username_gram_textview);
+        points_textView = findViewById(R.id.points_gram_textView);
         username_textView.setText(username);
         points_textView.setText(String.valueOf(points));
 
