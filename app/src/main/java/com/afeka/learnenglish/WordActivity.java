@@ -471,13 +471,13 @@ public class WordActivity extends AppCompatActivity {
     private void time_per_question(){
         switch (level_name){
             case "Beginners":
-                second_per_ques = 15;
+                second_per_ques = 30;
                 break;
             case "Basic":
-                second_per_ques = 10;
+                second_per_ques = 20;
                 break;
             case "Advanced":
-                second_per_ques = 8;
+                second_per_ques = 15;
                 break;
         }
     }
