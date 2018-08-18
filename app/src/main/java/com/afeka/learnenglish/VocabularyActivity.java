@@ -56,8 +56,6 @@ public class VocabularyActivity extends AppCompatActivity {
         points = extras.getInt("EXTRA_POINTS");
         level_name = extras.getString("EXTRA_LEVEL");
 
-        get_words_from_server();
-
         option1_button = findViewById(R.id.button_option1);
         option2_button = findViewById(R.id.button_option2);
         option3_button = findViewById(R.id.button_option3);
@@ -69,6 +67,7 @@ public class VocabularyActivity extends AppCompatActivity {
         username_display.setText(username);
         points_textView.setText(String.valueOf(points));
 
+        get_words_from_server();
 
         option1_button.setOnClickListener(new View.OnClickListener() {
             @Override
