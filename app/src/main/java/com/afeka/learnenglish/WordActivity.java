@@ -355,8 +355,7 @@ public class WordActivity extends AppCompatActivity {
         if(letter == meaning_in_english.charAt(current_letter)){
             button.setEnabled(false);
             current_letter++;
-            if(current_letter >= meaning_in_english.length()) {
-                current_letter = 0;                    //---------------------------------
+            if(current_letter == meaning_in_english.length()) {
                 points += 10;
                 points_textView.setText(String.valueOf(points));
                 new_question();
@@ -393,14 +392,45 @@ public class WordActivity extends AppCompatActivity {
         if(current_question_index >= words_list.size())
             current_question_index = 0;
 
+        current_letter = 0;
+        set_enable_buttons();
         word_in_hebrew = meanings_list.get(current_question_index);
         word_textView.setText(word_in_hebrew);
 
         meaning_in_english = words_list.get(current_question_index);
+        meaning_in_english = meaning_in_english.toLowerCase();
         length_of_meaning = meaning_in_english.length();
 
         current_question_index++;
-
         fill_letters_in_Buttons();
+    }
+
+
+    private void set_enable_buttons(){
+        l_button1.setEnabled(true);
+        l_button2.setEnabled(true);
+        l_button3.setEnabled(true);
+        l_button4.setEnabled(true);
+        l_button5.setEnabled(true);
+        l_button6.setEnabled(true);
+        l_button7.setEnabled(true);
+        l_button8.setEnabled(true);
+        l_button9.setEnabled(true);
+        l_button10.setEnabled(true);
+        l_button11.setEnabled(true);
+        l_button12.setEnabled(true);
+        l_button13.setEnabled(true);
+        l_button14.setEnabled(true);
+        l_button15.setEnabled(true);
+        l_button16.setEnabled(true);
+        l_button17.setEnabled(true);
+        l_button18.setEnabled(true);
+        l_button19.setEnabled(true);
+        l_button20.setEnabled(true);
+        l_button21.setEnabled(true);
+        l_button22.setEnabled(true);
+        l_button23.setEnabled(true);
+        l_button24.setEnabled(true);
+        l_button25.setEnabled(true);
     }
 }
