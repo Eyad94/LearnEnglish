@@ -1,10 +1,11 @@
 <?xml version="1.0" encoding="utf-8"?>
-<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".GrammarActivity">
+    android:background="@drawable/background_gradient"
+    tools:context="com.afeka.learnenglish.GrammarActivity">
 
     <Button
         android:id="@+id/learn_english_web2"
@@ -16,12 +17,11 @@
         android:background="@android:color/transparent"
         android:fontFamily="serif-monospace"
         android:gravity="center"
-        android:onClick="browser4"
+        android:onClick="browser1"
         android:text="@string/english_grammar_exercises"
         android:textColor="@android:color/background_light"
         android:textSize="30sp"
         android:textStyle="bold" />
-
 
     <Button
         android:id="@+id/oxford_button"
@@ -33,7 +33,7 @@
         android:background="@android:color/transparent"
         android:fontFamily="serif-monospace"
         android:gravity="center"
-        android:onClick="browser1"
+        android:onClick="browser2"
         android:text="@string/oxford_guide_to_english_grammar"
         android:textColor="@android:color/background_light"
         android:textSize="30sp"
@@ -49,7 +49,7 @@
         android:background="@android:color/transparent"
         android:fontFamily="serif-monospace"
         android:gravity="center"
-        android:onClick="browser2"
+        android:onClick="browser3"
         android:text="@string/basics_of_english_grammar"
         android:textColor="@android:color/background_light"
         android:textSize="30sp"
@@ -66,10 +66,9 @@
         android:background="@android:color/transparent"
         android:fontFamily="serif-monospace"
         android:gravity="center"
-        android:onClick="browser3"
+        android:onClick="browser4"
         android:text="@string/learn_english_website"
         android:textColor="@android:color/background_light"
         android:textSize="30sp"
         android:textStyle="bold" />
-
-</android.support.constraint.ConstraintLayout>
+</RelativeLayout>
