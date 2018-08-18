@@ -1,5 +1,6 @@
 package com.afeka.learnenglish;
 
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import java.util.Random;
 
 public class VocabularyActivity extends AppCompatActivity {
 
+    SharedPreferences sharedPreferences;
     DatabaseReference mDatabase;
     ArrayList<String> words_list = new ArrayList<>();
     ArrayList<String> meanings_list = new ArrayList<>();
@@ -52,9 +54,10 @@ public class VocabularyActivity extends AppCompatActivity {
 
         //getting extras
         Bundle extras = getIntent().getExtras();
-        username = extras.getString("EXTRA_USERNAME");
-        points = extras.getInt("EXTRA_POINTS");
         level_name = extras.getString("EXTRA_LEVEL");
+
+        sharedPreferences = getSharedPreferences("UserInfo", 0);
+        points = sharedPreferences.getInt("POINTS",0);
 
         option1_button = findViewById(R.id.button_option1);
         option2_button = findViewById(R.id.button_option2);
@@ -99,6 +102,23 @@ public class VocabularyActivity extends AppCompatActivity {
                 check_answer(4);
             }
         });
+    }
+
+    @Override
+    protected void onStop(){
+        super.onStop();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("POINTS",points);
+        editor.commit();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("POINTS",points);
+        editor.commit();
     }
 
 

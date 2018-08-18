@@ -1,6 +1,7 @@
 package com.afeka.learnenglish;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -18,6 +19,7 @@ import java.util.ArrayList;
 
 public class LevelActivity extends AppCompatActivity {
 
+    SharedPreferences sharedPreferences;
     String username;
     int points;
     TextView username_textView;
@@ -34,10 +36,9 @@ public class LevelActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_level);
 
-        //getting extras
-        Bundle extras = getIntent().getExtras();
-        username = extras.getString("EXTRA_USERNAME");
-        points = extras.getInt("EXTRA_POINTS");
+        sharedPreferences = getSharedPreferences("UserInfo", 0);
+        username = sharedPreferences.getString("USERNAME", "");
+        points = sharedPreferences.getInt("POINTS",0);
 
         username_textView = findViewById(R.id.username_lev_textview);
         points_textView = findViewById(R.id.points_lev_textView);
@@ -76,17 +77,20 @@ public class LevelActivity extends AppCompatActivity {
             }
         });
 
+    }
 
+    @Override
+    protected void onResume(){
+        super.onResume();
+        points = sharedPreferences.getInt("POINTS",0);
+        points_textView.setText(String.valueOf(points));
     }
 
     private void button_level_click(String level){
         Intent OptionActivity_intent = new Intent(LevelActivity.this , OptionActivity.class);
 
         Bundle extras = new Bundle();
-        extras.putString("EXTRA_USERNAME",username);
-        extras.putInt("EXTRA_POINTS", points);
         extras.putString("EXTRA_LEVEL",level);
-
         OptionActivity_intent.putExtras(extras);
         startActivity(OptionActivity_intent);
     }

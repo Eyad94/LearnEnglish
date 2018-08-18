@@ -2,6 +2,7 @@ package com.afeka.learnenglish;
 
 
 import android.annotation.SuppressLint;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -24,6 +25,7 @@ import java.util.Random;
 
 public class PictureActivity extends AppCompatActivity {
 
+    SharedPreferences sharedPreferences;
     DatabaseReference mDatabase;
     ArrayList<String> names_of_pictures = new ArrayList<>();
     ArrayList<String> url_of_pictures = new ArrayList<>();
@@ -74,10 +76,13 @@ public class PictureActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_picture);
 
+
         //getting extras
         Bundle extras = getIntent().getExtras();
-        points = extras.getInt("EXTRA_POINTS");
         level_name = extras.getString("EXTRA_LEVEL");
+
+        sharedPreferences = getSharedPreferences("UserInfo", 0);
+        points = sharedPreferences.getInt("POINTS",0);
 
         points_textView = findViewById(R.id.points_pic_textView);
         points_textView.setText(String.valueOf(points));
@@ -176,11 +181,23 @@ public class PictureActivity extends AppCompatActivity {
 
     }
 
+    @Override
+    protected void onStop(){
+        super.onStop();
+        countDownTimer.cancel();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("POINTS",points);
+        editor.commit();
+    }
+
 
     @Override
-    protected void onPause(){
-        super.onPause();
+    public void onBackPressed() {
+        super.onBackPressed();
         countDownTimer.cancel();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("POINTS",points);
+        editor.commit();
     }
 
 

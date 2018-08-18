@@ -1,6 +1,7 @@
 package com.afeka.learnenglish;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
@@ -9,6 +10,7 @@ import android.widget.TextView;
 
 public class OptionActivity extends AppCompatActivity {
 
+    SharedPreferences sharedPreferences;
     String username;
     TextView username_textView;
 
@@ -27,11 +29,14 @@ public class OptionActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_option);
 
+
         //getting extras
         Bundle extras = getIntent().getExtras();
-        username = extras.getString("EXTRA_USERNAME");
-        points = extras.getInt("EXTRA_POINTS");
         level_name = extras.getString("EXTRA_LEVEL");
+
+        sharedPreferences = getSharedPreferences("UserInfo", 0);
+        username = sharedPreferences.getString("USERNAME", "");
+        points = sharedPreferences.getInt("POINTS",0);
 
         username_textView = findViewById(R.id.username_opt_textview);
         points_textView = findViewById(R.id.points_opt_textView);
@@ -44,8 +49,6 @@ public class OptionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent write_intent = new Intent(OptionActivity.this, PictureActivity.class);
                 Bundle extras = new Bundle();
-                extras.putString("EXTRA_USERNAME",username);
-                extras.putInt("EXTRA_POINTS", points);
                 extras.putString("EXTRA_LEVEL",level_name);
                 write_intent.putExtras(extras);
                 startActivity(write_intent);
@@ -59,8 +62,6 @@ public class OptionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent vocablary_intent = new Intent(OptionActivity.this, VocabularyActivity.class);
                 Bundle extras = new Bundle();
-                extras.putString("EXTRA_USERNAME",username);
-                extras.putInt("EXTRA_POINTS", points);
                 extras.putString("EXTRA_LEVEL",level_name);
                 vocablary_intent.putExtras(extras);
                 startActivity(vocablary_intent);
@@ -73,8 +74,6 @@ public class OptionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent word_intent = new Intent(OptionActivity.this, WordActivity.class);
                 Bundle extras = new Bundle();
-                extras.putString("EXTRA_USERNAME",username);
-                extras.putInt("EXTRA_POINTS", points);
                 extras.putString("EXTRA_LEVEL",level_name);
                 word_intent.putExtras(extras);
                 startActivity(word_intent);
@@ -87,14 +86,19 @@ public class OptionActivity extends AppCompatActivity {
             public void onClick(View view) {
                 Intent grammar_intent = new Intent(OptionActivity.this, GrammarActivity.class);
                 Bundle extras = new Bundle();
-                extras.putString("EXTRA_USERNAME",username);
-                extras.putInt("EXTRA_POINTS", points);
                 extras.putString("EXTRA_LEVEL",level_name);
                 grammar_intent.putExtras(extras);
                 startActivity(grammar_intent);
             }
         });
 
+    }
+
+    @Override
+    protected void onResume(){
+        super.onResume();
+        points = sharedPreferences.getInt("POINTS",0);
+        points_textView.setText(String.valueOf(points));
     }
 
 }

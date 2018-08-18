@@ -1,6 +1,7 @@
 package com.afeka.learnenglish;
 
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.net.Uri;
 import android.os.Bundle;
 import android.support.v7.app.AppCompatActivity;
@@ -11,6 +12,7 @@ import android.widget.TextView;
 public class GrammarActivity extends AppCompatActivity {
 
 
+    SharedPreferences sharedPreferences;
     Button button_grammar1;
     Button button_grammar2;
     Button button_grammar3;
@@ -37,9 +39,11 @@ public class GrammarActivity extends AppCompatActivity {
 
         //getting extras
         Bundle extras = getIntent().getExtras();
-        username = extras.getString("EXTRA_USERNAME");
-        points = extras.getInt("EXTRA_POINTS");
         level_name = extras.getString("EXTRA_LEVEL");
+
+        sharedPreferences = getSharedPreferences("UserInfo", 0);
+        username = sharedPreferences.getString("USERNAME", "");
+        points = sharedPreferences.getInt("POINTS",0);
 
         username_textView = findViewById(R.id.username_gram_textview);
         points_textView = findViewById(R.id.points_gram_textView);

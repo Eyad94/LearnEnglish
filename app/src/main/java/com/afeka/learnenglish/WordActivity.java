@@ -2,6 +2,7 @@ package com.afeka.learnenglish;
 
 import android.annotation.SuppressLint;
 import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.CountDownTimer;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
@@ -23,6 +24,7 @@ import java.util.Random;
 
 public class WordActivity extends AppCompatActivity {
 
+    SharedPreferences sharedPreferences;
     DatabaseReference mDatabase;
     ArrayList<String> words_list = new ArrayList<>();
     ArrayList<String> meanings_list = new ArrayList<>();
@@ -62,8 +64,10 @@ public class WordActivity extends AppCompatActivity {
 
         //getting extras
         Bundle extras = getIntent().getExtras();
-        points = extras.getInt("EXTRA_POINTS");
         level_name = extras.getString("EXTRA_LEVEL");
+
+        sharedPreferences = getSharedPreferences("UserInfo", 0);
+        points = sharedPreferences.getInt("POINTS",0);
 
         points_textView = findViewById(R.id.points_word_textView);
         points_textView.setText(String.valueOf(points));
@@ -279,9 +283,22 @@ public class WordActivity extends AppCompatActivity {
 
 
     @Override
-    protected void onPause(){
-        super.onPause();
+    protected void onStop(){
+        super.onStop();
         countDownTimer.cancel();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("POINTS",points);
+        editor.commit();
+    }
+
+
+    @Override
+    public void onBackPressed() {
+        super.onBackPressed();
+        countDownTimer.cancel();
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("POINTS",points);
+        editor.commit();
     }
 
 
