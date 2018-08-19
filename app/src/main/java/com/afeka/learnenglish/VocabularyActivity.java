@@ -283,6 +283,7 @@ public class VocabularyActivity extends AppCompatActivity {
     }
 
 
+    //get current index question from shared preferance
     private void current_question_index_sh(){
         switch (level_name){
             case "Beginners":
@@ -297,6 +298,7 @@ public class VocabularyActivity extends AppCompatActivity {
     }
 
 
+    //commit user info
     private void commit_user_info(){
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("POINTS",points);

@@ -73,6 +73,7 @@ public class WordActivity extends AppCompatActivity {
         //getting user info from sharedPreferences
         sharedPreferences = getSharedPreferences("UserInfo", 0);
         points = sharedPreferences.getInt("POINTS",0);
+        current_question_index_sh();
 
         //initializing components
         points_textView = findViewById(R.id.points_word_textView);
@@ -307,9 +308,7 @@ public class WordActivity extends AppCompatActivity {
     protected void onStop(){
         super.onStop();
         countDownTimer.cancel();
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("POINTS",points);
-        editor.commit();
+        commit_user_info();
     }
 
 
@@ -318,9 +317,7 @@ public class WordActivity extends AppCompatActivity {
     public void onBackPressed() {
         super.onBackPressed();
         countDownTimer.cancel();
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("POINTS",points);
-        editor.commit();
+        commit_user_info();
     }
 
 
@@ -550,5 +547,37 @@ public class WordActivity extends AppCompatActivity {
             }
             new_question();
         }
+    }
+
+
+    //get current index question from shared preferance
+    private void current_question_index_sh(){
+        switch (level_name){
+            case "Beginners":
+                current_question_index = sharedPreferences.getInt("WORD1",0);
+                break;
+            case "Basic":
+                current_question_index = sharedPreferences.getInt("WORD2",0);
+            case "Advanced":
+                current_question_index = sharedPreferences.getInt("WORD3",0);
+        }
+
+    }
+
+
+    //commit user info
+    private void commit_user_info(){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("POINTS",points);
+        switch (level_name){
+            case "Beginners":
+                editor.putInt("WORD1", current_question_index);
+                break;
+            case "Basic":
+                editor.putInt("WORD2", current_question_index);
+            case "Advanced":
+                editor.putInt("WORD3", current_question_index);
+        }
+        editor.commit();
     }
 }
