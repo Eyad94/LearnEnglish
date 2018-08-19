@@ -111,7 +111,7 @@ public class WordActivity extends AppCompatActivity {
         star2_imageView = findViewById(R.id.star2_imageView);
         star3_imageView = findViewById(R.id.star3_imageView);
 
-        if(level_name != "Basic"){
+        if( ! level_name.equals("Basic")){
             star1_imageView.setVisibility(View.INVISIBLE);
             star2_imageView.setVisibility(View.INVISIBLE);
             star3_imageView.setVisibility(View.INVISIBLE);
@@ -509,10 +509,10 @@ public class WordActivity extends AppCompatActivity {
             }
             public void onFinish() {
                 Toast.makeText(getApplicationContext(), "You did not make it in time", Toast.LENGTH_LONG).show();
-                if(level_name == "Basic")
+                if(level_name.equals("Basic"))
                     stars_change();
                 else
-                    if(level_name == "Advanced")
+                    if(level_name.equals("Advanced"))
                         onBackPressed();
                      else
                         new_question();

@@ -359,7 +359,7 @@ public class PictureActivity extends AppCompatActivity {
             }
             public void onFinish() {
                 Toast.makeText(getApplicationContext(), "You did not make it in time", Toast.LENGTH_LONG).show();
-                if(level_name == "Advanced"){
+                if(level_name.equals("Advanced")){
                     end_game();
                 }
                 else
