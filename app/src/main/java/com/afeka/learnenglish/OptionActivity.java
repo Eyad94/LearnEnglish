@@ -34,15 +34,16 @@ public class OptionActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         level_name = extras.getString("EXTRA_LEVEL");
 
+        //getting user info from sharedPreferences
         sharedPreferences = getSharedPreferences("UserInfo", 0);
         username = sharedPreferences.getString("USERNAME", "");
         points = sharedPreferences.getInt("POINTS",0);
 
+        //initializing components
         username_textView = findViewById(R.id.username_opt_textview);
         points_textView = findViewById(R.id.points_opt_textView);
         username_textView.setText(username);
         points_textView.setText(String.valueOf(points));
-
         write_button = findViewById(R.id.picture_button);
         write_button.setOnClickListener(new View.OnClickListener() {
             @Override

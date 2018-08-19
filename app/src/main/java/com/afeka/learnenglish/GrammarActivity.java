@@ -41,26 +41,30 @@ public class GrammarActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         level_name = extras.getString("EXTRA_LEVEL");
 
+        //getting user info from sharedPreferences
         sharedPreferences = getSharedPreferences("UserInfo", 0);
         username = sharedPreferences.getString("USERNAME", "");
         points = sharedPreferences.getInt("POINTS",0);
 
+        //initializing components
         username_textView = findViewById(R.id.username_gram_textview);
         points_textView = findViewById(R.id.points_gram_textView);
         username_textView.setText(username);
         points_textView.setText(String.valueOf(points));
-
         button_grammar1 = findViewById(R.id.grammar1_button);
         button_grammar2 = findViewById(R.id.grammar2_button);
         button_grammar3 = findViewById(R.id.grammar3_button);
 
+        //change components as level game
         switch_level_game();
 
+        //initializing components
         button_grammar1.setText(button_grammar1_text);
         button_grammar2.setText(button_grammar2_text);
         button_grammar3.setText(button_grammar3_text);
 
 
+        //buttons clicked
         button_grammar1.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -69,7 +73,6 @@ public class GrammarActivity extends AppCompatActivity {
             }
         });
 
-
         button_grammar2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
@@ -77,7 +80,6 @@ public class GrammarActivity extends AppCompatActivity {
                 startActivity(browserIntent);
             }
         });
-
 
         button_grammar3.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -88,7 +90,7 @@ public class GrammarActivity extends AppCompatActivity {
         });
     }
 
-
+    //change components as level game
     private void switch_level_game(){
         switch (level_name){
             case "Beginners":

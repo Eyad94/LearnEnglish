@@ -23,20 +23,21 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+        //getting user info from sharedPreferences
         sharedPreferences = getSharedPreferences("UserInfo", 0);
         username = sharedPreferences.getString("USERNAME", "");
         points = sharedPreferences.getInt("POINTS",0);
 
+        //check user is exists
         if(username.length() > 0){
             Intent LevelActivity_intent = new Intent(this, LevelActivity.class);
             startActivity(LevelActivity_intent);
         }
 
+        //initializing components
         username_input = findViewById(R.id.name_editText);
         button_go = findViewById(R.id.start_button);
-
         points = 0;
-
         button_go.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -48,13 +49,14 @@ public class HomeActivity extends AppCompatActivity {
 
     private void button_go_clicked(){
 
+        //check user name is not empty
         if (username_input.getText().length() == 0 ) {
             Toast.makeText(this, "please enter name!!", Toast.LENGTH_SHORT).show();
             return;
         }
 
+        //commit user name sharedPreferences
         username = username_input.getText().toString();
-
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putString("USERNAME",username);
         editor.putInt("POINTS",0);

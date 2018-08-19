@@ -10,7 +10,7 @@ import android.widget.ImageView;
 import java.io.InputStream;
 import java.net.URL;
 
-
+//Asynctask - get picture from firebase
 public class AsyncImageView {
     ImageView imageView;
     String url;

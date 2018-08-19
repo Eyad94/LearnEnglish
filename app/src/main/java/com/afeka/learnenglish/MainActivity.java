@@ -15,6 +15,7 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        //show main activity 3 seconds
         new Handler().postDelayed(new Runnable() {
             @Override
             public void run() {
