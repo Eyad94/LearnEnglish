@@ -62,6 +62,7 @@ public class VocabularyActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("UserInfo", 0);
         points = sharedPreferences.getInt("POINTS",0);
         username = sharedPreferences.getString("USERNAME","");
+        current_question_index = sharedPreferences.getInt("VOCABULARY",0);
 
         //initializing components
         option1_button = findViewById(R.id.button_option1);
@@ -123,6 +124,7 @@ public class VocabularyActivity extends AppCompatActivity {
         super.onStop();
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("POINTS",points);
+        editor.putInt("VOCABULARY",current_question_index);
         editor.commit();
     }
 
@@ -133,6 +135,7 @@ public class VocabularyActivity extends AppCompatActivity {
         super.onBackPressed();
         SharedPreferences.Editor editor = sharedPreferences.edit();
         editor.putInt("POINTS",points);
+        editor.putInt("VOCABULARY",current_question_index);
         editor.commit();
     }
 
