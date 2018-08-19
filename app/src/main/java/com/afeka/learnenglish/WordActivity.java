@@ -54,6 +54,11 @@ public class WordActivity extends AppCompatActivity {
     Button l_button20, l_button21, l_button22, l_button23, l_button24, l_button25;
 
 
+    ImageView star1_imageView;
+    ImageView star2_imageView;
+    ImageView star3_imageView;
+    int stars = 3;
+
 
 
     @Override
@@ -100,6 +105,11 @@ public class WordActivity extends AppCompatActivity {
         l_button23 = findViewById(R.id.letter_button23);
         l_button24 = findViewById(R.id.letter_button24);
         l_button25 = findViewById(R.id.letter_button25);
+
+
+        star1_imageView = findViewById(R.id.star1_imageView);
+        star2_imageView = findViewById(R.id.star2_imageView);
+        star3_imageView = findViewById(R.id.star3_imageView);
 
 
         get_words_from_server();
@@ -493,8 +503,26 @@ public class WordActivity extends AppCompatActivity {
             }
             public void onFinish() {
                 Toast.makeText(getApplicationContext(), "You did not make it in time", Toast.LENGTH_LONG).show();
-                new_question();
+                stars_change();
             }
         }.start();
+    }
+
+
+    private void stars_change(){
+        stars--;
+        if(stars == 0)
+            onBackPressed();
+        else {
+            switch (stars) {
+                case 1:
+                    star2_imageView.setVisibility(View.INVISIBLE);
+                    break;
+                case 2:
+                    star1_imageView.setVisibility(View.INVISIBLE);
+                    break;
+            }
+            new_question();
+        }
     }
 }
