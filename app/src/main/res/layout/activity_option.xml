@@ -77,21 +77,21 @@
 
     <Button
         android:id="@+id/vocabulary_button"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/logo_vocabulary"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/linearLayout1" />
 
     <Button
         android:id="@+id/picture_button"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginEnd="35dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="40dp"
         android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/logo_image"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/vocabulary_button"
@@ -105,6 +105,7 @@
         android:layout_marginTop="7dp"
         android:text="@string/textview_vocabulary"
         android:textAlignment="center"
+        android:textColor="@android:color/holo_orange_light"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vocabulary_button" />
@@ -113,30 +114,31 @@
         android:id="@+id/picture_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="50dp"
+        android:layout_marginEnd="55dp"
         android:layout_marginTop="7dp"
         android:text="@string/textview_picture"
+        android:textColor="@android:color/holo_orange_light"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/picture_button" />
 
     <Button
         android:id="@+id/word_button"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginStart="35dp"
-        android:layout_marginTop="53dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginStart="40dp"
+        android:layout_marginTop="36dp"
         android:background="@drawable/logo_words"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/vocabulary_textView" />
 
     <Button
         android:id="@+id/grammar_button"
-        android:layout_width="120dp"
-        android:layout_height="120dp"
-        android:layout_marginEnd="35dp"
-        android:layout_marginStart="50dp"
-        android:layout_marginTop="50dp"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="52dp"
+        android:layout_marginStart="68dp"
+        android:layout_marginTop="32dp"
         android:background="@drawable/logo_grammar"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toEndOf="@+id/word_button"
@@ -146,9 +148,10 @@
         android:id="@+id/grammar_textView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginEnd="70dp"
+        android:layout_marginEnd="75dp"
         android:layout_marginTop="7dp"
         android:text="@string/textview_grammar"
+        android:textColor="@android:color/holo_orange_light"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/grammar_button" />
@@ -160,9 +163,36 @@
         android:layout_marginStart="40dp"
         android:layout_marginTop="7dp"
         android:text="@string/textview_word"
+        android:textColor="@android:color/holo_orange_light"
         android:textSize="18sp"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/word_button" />
+
+    <Button
+        android:id="@+id/Assembling_button"
+        android:layout_width="100dp"
+        android:layout_height="100dp"
+        android:layout_marginEnd="130dp"
+        android:layout_marginStart="130dp"
+        android:layout_marginTop="25dp"
+        android:background="@drawable/logo_assembling"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/word_textView" />
+
+    <TextView
+        android:id="@+id/assembling_textView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="136dp"
+        android:layout_marginStart="151dp"
+        android:layout_marginTop="11dp"
+        android:text="הרכבת מילה"
+        android:textColor="@android:color/holo_orange_light"
+        android:textSize="18sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Assembling_button" />
 
 
 </android.support.constraint.ConstraintLayout>

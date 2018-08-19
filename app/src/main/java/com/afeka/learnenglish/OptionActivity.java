@@ -21,6 +21,7 @@ public class OptionActivity extends AppCompatActivity {
     Button vocabulary_button;
     Button word_button;
     Button grammar_button;
+    Button assembling_button;
 
     String level_name;
 
@@ -91,6 +92,18 @@ public class OptionActivity extends AppCompatActivity {
                 extras.putString("EXTRA_LEVEL",level_name);
                 grammar_intent.putExtras(extras);
                 startActivity(grammar_intent);
+            }
+        });
+
+        assembling_button = findViewById(R.id.Assembling_button);
+        assembling_button.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent assembling_intent = new Intent(OptionActivity.this, AssemblingActivity.class);
+                Bundle extras = new Bundle();
+                extras.putString("EXTRA_LEVEL",level_name);
+                assembling_intent.putExtras(extras);
+                startActivity(assembling_intent);
             }
         });
 
