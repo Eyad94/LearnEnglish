@@ -372,8 +372,10 @@ public class PictureActivity extends AppCompatActivity {
                 if(level_name.equals("Advanced")){
                     end_game();
                 }
-                else
+                else {
+                    current_question_index++;
                     new_question();
+                }
             }
         }.start();
     }

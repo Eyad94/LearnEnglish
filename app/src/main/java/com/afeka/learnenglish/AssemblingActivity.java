@@ -377,6 +377,7 @@ public class AssemblingActivity extends AppCompatActivity {
             }
             public void onFinish() {
                 Toast.makeText(getApplicationContext(), "You did not make it in time", Toast.LENGTH_LONG).show();
+                current_question_index++;
                 new_question();
             }
         }.start();

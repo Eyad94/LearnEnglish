@@ -525,7 +525,10 @@ public class WordActivity extends AppCompatActivity {
                     if(level_name.equals("Advanced"))
                         onBackPressed();
                      else
-                        new_question();
+                         {
+                             current_question_index++;
+                             new_question();
+                         }
             }
         }.start();
     }
@@ -545,6 +548,7 @@ public class WordActivity extends AppCompatActivity {
                     star1_imageView.setVisibility(View.INVISIBLE);
                     break;
             }
+            current_question_index++;
             new_question();
         }
     }
