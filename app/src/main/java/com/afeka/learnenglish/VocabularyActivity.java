@@ -148,6 +148,7 @@ public class VocabularyActivity extends AppCompatActivity {
         word_textView.setText(word);
     }
 
+
     private void fill_answers_in_options(){
         int index1, index2, index3;
         int num_of_words = meanings_list.size();
@@ -194,6 +195,7 @@ public class VocabularyActivity extends AppCompatActivity {
         }
     }
 
+
     private void check_answer(int num_answer_selected){
         if(num_answer_selected == correct_answer_mum) {
             points++;
@@ -214,6 +216,7 @@ public class VocabularyActivity extends AppCompatActivity {
         }
         else
         {
+            rotate_true_answer();
             false_imageView.setVisibility(View.VISIBLE);
             handler_e.postDelayed(new Runnable() {
                 @Override
@@ -226,7 +229,7 @@ public class VocabularyActivity extends AppCompatActivity {
 
                     new_question();
                 }
-            }, 1000);
+            }, 2000);
         }
     }
 
@@ -249,5 +252,24 @@ public class VocabularyActivity extends AppCompatActivity {
 
             }
         });
+    }
+
+
+    private void rotate_true_answer(){
+        switch (correct_answer_mum){
+            case 1:
+                option1_button.animate().rotation(option1_button.getRotation()-360).start();
+                break;
+            case 2:
+                option2_button.animate().rotation(option2_button.getRotation()-360).start();
+                break;
+            case 3:
+                option3_button.animate().rotation(option3_button.getRotation()-360).start();
+                break;
+            case 4:
+                option4_button.animate().rotation(option4_button.getRotation()-360).start();
+                break;
+        }
+
     }
 }
