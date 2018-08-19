@@ -53,7 +53,6 @@ public class WordActivity extends AppCompatActivity {
     Button l_button11, l_button12, l_button13, l_button14, l_button15, l_button16, l_button17, l_button18, l_button19;
     Button l_button20, l_button21, l_button22, l_button23, l_button24, l_button25;
 
-
     ImageView star1_imageView;
     ImageView star2_imageView;
     ImageView star3_imageView;
@@ -71,15 +70,17 @@ public class WordActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         level_name = extras.getString("EXTRA_LEVEL");
 
+        //getting user info from sharedPreferences
         sharedPreferences = getSharedPreferences("UserInfo", 0);
         points = sharedPreferences.getInt("POINTS",0);
 
+        //initializing components
         points_textView = findViewById(R.id.points_word_textView);
         points_textView.setText(String.valueOf(points));
         timer_display = findViewById(R.id.timer_word_textView);
         word_textView = findViewById(R.id.word_hebrew_txt);
 
-
+        //initializing components
         l_button1 = findViewById(R.id.letter_button1);
         l_button2 = findViewById(R.id.letter_button2);
         l_button3 = findViewById(R.id.letter_button3);
@@ -106,11 +107,12 @@ public class WordActivity extends AppCompatActivity {
         l_button24 = findViewById(R.id.letter_button24);
         l_button25 = findViewById(R.id.letter_button25);
 
-
+        //initializing components
         star1_imageView = findViewById(R.id.star1_imageView);
         star2_imageView = findViewById(R.id.star2_imageView);
         star3_imageView = findViewById(R.id.star3_imageView);
 
+        //check level name is not Basic
         if( ! level_name.equals("Basic")){
             star1_imageView.setVisibility(View.INVISIBLE);
             star2_imageView.setVisibility(View.INVISIBLE);
@@ -118,7 +120,9 @@ public class WordActivity extends AppCompatActivity {
         }
 
 
+        //get all words from firebase server by level name
         get_words_from_server();
+
 
         //buttons clicked
         l_button1.setOnClickListener(new View.OnClickListener() {
@@ -298,6 +302,7 @@ public class WordActivity extends AppCompatActivity {
     }
 
 
+    //event stop activity
     @Override
     protected void onStop(){
         super.onStop();
@@ -308,6 +313,7 @@ public class WordActivity extends AppCompatActivity {
     }
 
 
+    //event back clicked
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -318,6 +324,7 @@ public class WordActivity extends AppCompatActivity {
     }
 
 
+    //set text to all buttons
     @SuppressLint("SetTextI18n")
     private void fill_letters_in_Buttons(){
         int[] leters_Button = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,-1,
@@ -390,6 +397,7 @@ public class WordActivity extends AppCompatActivity {
     }
 
 
+    //return index of char in alphabet
     private int index_of_char(char ch){
         for (int i=0; i<alphabet.length; i++)
             if(ch == alphabet[i])
@@ -398,6 +406,7 @@ public class WordActivity extends AppCompatActivity {
     }
 
 
+    //check current letter clicked is correct
     private void check_letter_correct(char letter, Button button){
         if(letter == meaning_in_english.charAt(current_letter)){
             button.setEnabled(false);
@@ -412,6 +421,7 @@ public class WordActivity extends AppCompatActivity {
     }
 
 
+    //get all words from firebase server by level name
     private void get_words_from_server(){
         mDatabase = FirebaseDatabase.getInstance().getReference().child("words").child(level_name);
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -434,6 +444,7 @@ public class WordActivity extends AppCompatActivity {
     }
 
 
+    //create new question
     private void new_question(){
         if(words_list.size() == 0)
             return;
@@ -455,6 +466,7 @@ public class WordActivity extends AppCompatActivity {
     }
 
 
+    //set enable all buttons
     private void set_enable_buttons(){
         l_button1.setEnabled(true);
         l_button2.setEnabled(true);
@@ -484,6 +496,7 @@ public class WordActivity extends AppCompatActivity {
     }
 
 
+    //time per question
     private void time_per_question(){
         switch (level_name){
             case "Beginners":
@@ -521,6 +534,7 @@ public class WordActivity extends AppCompatActivity {
     }
 
 
+    //starts = number of mistakes is 3
     private void stars_change(){
         stars--;
         if(stars == 0)

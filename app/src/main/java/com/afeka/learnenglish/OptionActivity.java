@@ -57,6 +57,7 @@ public class OptionActivity extends AppCompatActivity {
         });
 
 
+        //buttons clicked
         vocabulary_button = findViewById(R.id.vocabulary_button);
         vocabulary_button.setOnClickListener(new View.OnClickListener() {
             @Override

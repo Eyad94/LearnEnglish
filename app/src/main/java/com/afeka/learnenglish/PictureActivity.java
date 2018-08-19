@@ -68,7 +68,9 @@ public class PictureActivity extends AppCompatActivity {
     Button button9;
     Button button10;
 
+    //Animation
     ExplosionField explosionField;
+
     CountDownTimer countDownTimer;
     int second_per_ques;
     Random rand = new Random();
@@ -85,19 +87,20 @@ public class PictureActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         level_name = extras.getString("EXTRA_LEVEL");
 
+        //getting user info from sharedPreferences
         sharedPreferences = getSharedPreferences("UserInfo", 0);
         points = sharedPreferences.getInt("POINTS",0);
 
+        //initializing components
         points_textView = findViewById(R.id.points_pic_textView);
         points_textView.setText(String.valueOf(points));
-
         imageView = findViewById(R.id.image);
-
         timer_display = findViewById(R.id.timer_pic_textView);
         word_textView = findViewById(R.id.word_in_textView);
         word_in_txt = "";
         word_textView.setText(word_in_txt);
 
+        //initializing components
         button1 = findViewById(R.id.button1);
         button2 = findViewById(R.id.button2);
         button3 = findViewById(R.id.button3);
@@ -109,6 +112,7 @@ public class PictureActivity extends AppCompatActivity {
         button9 = findViewById(R.id.button9);
         button10 = findViewById(R.id.button10);
 
+        //get URL for all pictures from firebase
         get_pictures_from_server();
 
         //Animation
@@ -187,6 +191,7 @@ public class PictureActivity extends AppCompatActivity {
 
     }
 
+    //event stop activity
     @Override
     protected void onStop(){
         super.onStop();
@@ -197,6 +202,7 @@ public class PictureActivity extends AppCompatActivity {
     }
 
 
+    //event back clicked
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -207,6 +213,7 @@ public class PictureActivity extends AppCompatActivity {
     }
 
 
+    //check current letter clicked is correct
     private void check_letter_correct(char letter, Button button){
         if(letter == word_of_picture.charAt(current_letter)){
             word_in_txt += letter;
@@ -223,6 +230,7 @@ public class PictureActivity extends AppCompatActivity {
     }
 
 
+    //set text to all buttons
     @SuppressLint("SetTextI18n")
     private void fill_letters_in_Buttons(){
         int[] leters_Button = {-1,-1,-1,-1,-1,-1,-1,-1,-1,-1};
@@ -264,6 +272,7 @@ public class PictureActivity extends AppCompatActivity {
     }
 
 
+    //return index of char in alphabet
     private int index_of_char(char ch){
         for (int i=0; i<alphabet.length; i++)
             if(ch == alphabet[i])
@@ -272,6 +281,7 @@ public class PictureActivity extends AppCompatActivity {
     }
 
 
+    //get URL for all pictures from firebase
     private void get_pictures_from_server(){
         mDatabase = FirebaseDatabase.getInstance().getReference().child("pictures").child(level_name);
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -294,6 +304,7 @@ public class PictureActivity extends AppCompatActivity {
     }
 
 
+    //create new question
     private void new_question(){
         if(names_of_pictures.size() == 0)
             return;
@@ -320,6 +331,7 @@ public class PictureActivity extends AppCompatActivity {
     }
 
 
+    //set enable all buttons
     private void set_enable_buttons(){
         button1.setEnabled(true);
         button2.setEnabled(true);
@@ -334,6 +346,7 @@ public class PictureActivity extends AppCompatActivity {
     }
 
 
+    //time per question
     private void time_per_question(){
         switch (level_name){
             case "Beginners":
@@ -369,6 +382,7 @@ public class PictureActivity extends AppCompatActivity {
     }
 
 
+    //end the game
     private void end_game(){
         explosionField.explode(button1);
         explosionField.explode(button2);

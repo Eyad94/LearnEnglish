@@ -58,15 +58,18 @@ public class VocabularyActivity extends AppCompatActivity {
         Bundle extras = getIntent().getExtras();
         level_name = extras.getString("EXTRA_LEVEL");
 
+        //getting user info from sharedPreferences
         sharedPreferences = getSharedPreferences("UserInfo", 0);
         points = sharedPreferences.getInt("POINTS",0);
         username = sharedPreferences.getString("USERNAME","");
 
+        //initializing components
         option1_button = findViewById(R.id.button_option1);
         option2_button = findViewById(R.id.button_option2);
         option3_button = findViewById(R.id.button_option3);
         option4_button = findViewById(R.id.button_option4);
 
+        //initializing components
         true_imageView = findViewById(R.id.true_imageView);
         false_imageView = findViewById(R.id.false_imageView2);
         word_textView = findViewById(R.id.word_textView);
@@ -79,15 +82,17 @@ public class VocabularyActivity extends AppCompatActivity {
         true_imageView.setVisibility(View.INVISIBLE);
         false_imageView.setVisibility(View.INVISIBLE);
 
+        //get all words from firebase by name of level
         get_words_from_server();
 
+
+        //buttons clicked
         option1_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 check_answer(1);
             }
         });
-
 
         option2_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -96,14 +101,12 @@ public class VocabularyActivity extends AppCompatActivity {
             }
         });
 
-
         option3_button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
                 check_answer(3);
             }
         });
-
 
         option4_button.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -113,6 +116,8 @@ public class VocabularyActivity extends AppCompatActivity {
         });
     }
 
+
+    //event stop activity
     @Override
     protected void onStop(){
         super.onStop();
@@ -122,6 +127,7 @@ public class VocabularyActivity extends AppCompatActivity {
     }
 
 
+    //event back clicked
     @Override
     public void onBackPressed() {
         super.onBackPressed();
@@ -131,6 +137,7 @@ public class VocabularyActivity extends AppCompatActivity {
     }
 
 
+    //create new question
     private void new_question(){
         if(words_list.size() == 0)
             return;
@@ -149,6 +156,7 @@ public class VocabularyActivity extends AppCompatActivity {
     }
 
 
+    //fill answers in all options buttons
     private void fill_answers_in_options(){
         int index1, index2, index3;
         int num_of_words = meanings_list.size();
@@ -196,6 +204,7 @@ public class VocabularyActivity extends AppCompatActivity {
     }
 
 
+    //check answer is correct
     private void check_answer(int num_answer_selected){
         if(num_answer_selected == correct_answer_mum) {
             points++;
@@ -233,6 +242,8 @@ public class VocabularyActivity extends AppCompatActivity {
         }
     }
 
+
+    //get all words from firebase server by level name
     private void get_words_from_server(){
         mDatabase = FirebaseDatabase.getInstance().getReference().child("words").child(level_name);
         mDatabase.addValueEventListener(new ValueEventListener() {
@@ -255,6 +266,7 @@ public class VocabularyActivity extends AppCompatActivity {
     }
 
 
+    //rotate the correct answer
     private void rotate_true_answer(){
         switch (correct_answer_mum){
             case 1:
