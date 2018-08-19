@@ -6,21 +6,23 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
+import android.widget.ImageView;
 import android.widget.TextView;
-import android.widget.Toast;
+import android.os.Handler;
 import com.google.firebase.database.DataSnapshot;
 import com.google.firebase.database.DatabaseError;
 import com.google.firebase.database.DatabaseReference;
 import com.google.firebase.database.FirebaseDatabase;
 import com.google.firebase.database.ValueEventListener;
-
 import java.util.ArrayList;
 import java.util.Random;
+
 
 public class VocabularyActivity extends AppCompatActivity {
 
     SharedPreferences sharedPreferences;
     DatabaseReference mDatabase;
+    final Handler handler_e = new Handler();
     ArrayList<String> words_list = new ArrayList<>();
     ArrayList<String> meanings_list = new ArrayList<>();
     Random rand = new Random();
@@ -35,14 +37,14 @@ public class VocabularyActivity extends AppCompatActivity {
     Button option3_button;
     Button option4_button;
 
+    ImageView true_imageView;
+    ImageView false_imageView;
     TextView word_textView;
     TextView points_textView;
     TextView username_display;
     String username;
-
     int correct_answer_mum;
     int points;
-
     String level_name;
 
 
@@ -58,17 +60,24 @@ public class VocabularyActivity extends AppCompatActivity {
 
         sharedPreferences = getSharedPreferences("UserInfo", 0);
         points = sharedPreferences.getInt("POINTS",0);
+        username = sharedPreferences.getString("USERNAME","");
 
         option1_button = findViewById(R.id.button_option1);
         option2_button = findViewById(R.id.button_option2);
         option3_button = findViewById(R.id.button_option3);
         option4_button = findViewById(R.id.button_option4);
 
+        true_imageView = findViewById(R.id.true_imageView);
+        false_imageView = findViewById(R.id.false_imageView2);
         word_textView = findViewById(R.id.word_textView);
         points_textView = findViewById(R.id.points_voc_textView);
         username_display = findViewById(R.id.username_voc_textview);
         username_display.setText(username);
         points_textView.setText(String.valueOf(points));
+
+        //hiding answer message
+        true_imageView.setVisibility(View.INVISIBLE);
+        false_imageView.setVisibility(View.INVISIBLE);
 
         get_words_from_server();
 
@@ -189,18 +198,36 @@ public class VocabularyActivity extends AppCompatActivity {
         if(num_answer_selected == correct_answer_mum) {
             points++;
             points_textView.setText(String.valueOf(points));
-           // Toast.makeText(this, "Correct answer", Toast.LENGTH_SHORT).show();
+            true_imageView.setVisibility(View.VISIBLE);
+            handler_e.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    //Do this after 1000ms=1sec
+                    true_imageView.setVisibility(View.INVISIBLE);
+                    current_question_index++;
+                    if(current_question_index >= words_list.size())
+                        current_question_index = 0;
+
+                    new_question();
+                }
+            }, 1000);
         }
-        else {
-            //Toast.makeText(this, "Incorrect answer", Toast.LENGTH_SHORT).show();
+        else
+        {
+            false_imageView.setVisibility(View.VISIBLE);
+            handler_e.postDelayed(new Runnable() {
+                @Override
+                public void run() {
+                    //Do this after 1000ms=1sec
+                    false_imageView.setVisibility(View.INVISIBLE);
+                    current_question_index++;
+                    if(current_question_index >= words_list.size())
+                        current_question_index = 0;
+
+                    new_question();
+                }
+            }, 1000);
         }
-        current_question_index++;
-        if(current_question_index >= words_list.size())
-            current_question_index = 0;
-
-        new_question();
-
-
     }
 
     private void get_words_from_server(){
