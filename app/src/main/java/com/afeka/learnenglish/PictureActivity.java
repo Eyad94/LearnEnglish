@@ -4,6 +4,7 @@ package com.afeka.learnenglish;
 import android.annotation.SuppressLint;
 import android.content.SharedPreferences;
 import android.os.CountDownTimer;
+import android.os.Handler;
 import android.support.annotation.NonNull;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
@@ -21,6 +22,8 @@ import com.google.firebase.database.ValueEventListener;
 
 import java.util.ArrayList;
 import java.util.Random;
+
+import tyrantgit.explosionfield.ExplosionField;
 
 
 public class PictureActivity extends AppCompatActivity {
@@ -65,6 +68,7 @@ public class PictureActivity extends AppCompatActivity {
     Button button9;
     Button button10;
 
+    ExplosionField explosionField;
     CountDownTimer countDownTimer;
     int second_per_ques;
     Random rand = new Random();
@@ -107,6 +111,8 @@ public class PictureActivity extends AppCompatActivity {
 
         get_pictures_from_server();
 
+        //Animation
+        explosionField = ExplosionField.attach2Window(this);
 
         //buttons clicked
         button1.setOnClickListener(new View.OnClickListener() {
@@ -353,9 +359,34 @@ public class PictureActivity extends AppCompatActivity {
             }
             public void onFinish() {
                 Toast.makeText(getApplicationContext(), "You did not make it in time", Toast.LENGTH_LONG).show();
-                new_question();
+                if(level_name == "Advanced"){
+                    end_game();
+                }
+                else
+                    new_question();
             }
         }.start();
     }
 
+
+    private void end_game(){
+        explosionField.explode(button1);
+        explosionField.explode(button2);
+        explosionField.explode(button3);
+        explosionField.explode(button4);
+        explosionField.explode(button5);
+        explosionField.explode(button6);
+        explosionField.explode(button7);
+        explosionField.explode(button8);
+        explosionField.explode(button9);
+        explosionField.explode(button10);
+
+        new Handler().postDelayed(new Runnable() {
+            @Override
+            public void run() {
+                //Do this after 1000ms=1sec
+                onBackPressed();
+            }
+        }, 1000);
+    }
 }

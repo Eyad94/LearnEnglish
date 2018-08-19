@@ -111,6 +111,12 @@ public class WordActivity extends AppCompatActivity {
         star2_imageView = findViewById(R.id.star2_imageView);
         star3_imageView = findViewById(R.id.star3_imageView);
 
+        if(level_name != "Basic"){
+            star1_imageView.setVisibility(View.INVISIBLE);
+            star2_imageView.setVisibility(View.INVISIBLE);
+            star3_imageView.setVisibility(View.INVISIBLE);
+        }
+
 
         get_words_from_server();
 
@@ -503,7 +509,13 @@ public class WordActivity extends AppCompatActivity {
             }
             public void onFinish() {
                 Toast.makeText(getApplicationContext(), "You did not make it in time", Toast.LENGTH_LONG).show();
-                stars_change();
+                if(level_name == "Basic")
+                    stars_change();
+                else
+                    if(level_name == "Advanced")
+                        onBackPressed();
+                     else
+                        new_question();
             }
         }.start();
     }
