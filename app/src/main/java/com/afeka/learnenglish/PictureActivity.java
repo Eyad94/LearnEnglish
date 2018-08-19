@@ -221,6 +221,7 @@ public class PictureActivity extends AppCompatActivity {
                 points += 5;
                 points_textView.setText(String.valueOf(points));
                 countDownTimer.cancel();
+                current_question_index++;
                 new_question();
             }
         }
@@ -324,7 +325,6 @@ public class PictureActivity extends AppCompatActivity {
         AsyncImageView asyncImageView = new AsyncImageView(imageView);
         asyncImageView.loadUrl(url);
 
-        current_question_index++;
     }
 
 

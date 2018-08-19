@@ -412,6 +412,7 @@ public class WordActivity extends AppCompatActivity {
                 points += 10;
                 points_textView.setText(String.valueOf(points));
                 countDownTimer.cancel();
+                current_question_index++;
                 new_question();
             }
         }
@@ -458,7 +459,6 @@ public class WordActivity extends AppCompatActivity {
         meaning_in_english = meaning_in_english.toLowerCase();
         length_of_meaning = meaning_in_english.length();
 
-        current_question_index++;
         fill_letters_in_Buttons();
     }
 
