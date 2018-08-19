@@ -24,7 +24,6 @@
         <activity android:name=".VocabularyActivity" />
         <activity android:name=".WordActivity" />
         <activity android:name=".GrammarActivity" />
-        <activity android:name=".ListeningComprehensionActivity"></activity>
 
     </application>
 
