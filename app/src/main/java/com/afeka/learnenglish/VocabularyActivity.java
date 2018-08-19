@@ -62,7 +62,7 @@ public class VocabularyActivity extends AppCompatActivity {
         sharedPreferences = getSharedPreferences("UserInfo", 0);
         points = sharedPreferences.getInt("POINTS",0);
         username = sharedPreferences.getString("USERNAME","");
-        current_question_index = sharedPreferences.getInt("VOCABULARY",0);
+        current_question_index_sh();
 
         //initializing components
         option1_button = findViewById(R.id.button_option1);
@@ -122,10 +122,7 @@ public class VocabularyActivity extends AppCompatActivity {
     @Override
     protected void onStop(){
         super.onStop();
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("POINTS",points);
-        editor.putInt("VOCABULARY",current_question_index);
-        editor.commit();
+        commit_user_info();
     }
 
 
@@ -133,10 +130,7 @@ public class VocabularyActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
         super.onBackPressed();
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("POINTS",points);
-        editor.putInt("VOCABULARY",current_question_index);
-        editor.commit();
+        commit_user_info();
     }
 
 
@@ -286,5 +280,35 @@ public class VocabularyActivity extends AppCompatActivity {
                 break;
         }
 
+    }
+
+
+    private void current_question_index_sh(){
+        switch (level_name){
+            case "Beginners":
+                current_question_index = sharedPreferences.getInt("VOCABULARY1",0);
+                break;
+            case "Basic":
+                current_question_index = sharedPreferences.getInt("VOCABULARY2",0);
+            case "Advanced":
+                current_question_index = sharedPreferences.getInt("VOCABULARY3",0);
+        }
+
+    }
+
+
+    private void commit_user_info(){
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("POINTS",points);
+        switch (level_name){
+            case "Beginners":
+                editor.putInt("VOCABULARY1", current_question_index);
+                break;
+            case "Basic":
+                editor.putInt("VOCABULARY2", current_question_index);
+            case "Advanced":
+                editor.putInt("VOCABULARY3", current_question_index);
+        }
+        editor.commit();
     }
 }
