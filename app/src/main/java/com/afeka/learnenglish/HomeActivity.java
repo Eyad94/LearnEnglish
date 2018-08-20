@@ -23,8 +23,15 @@ public class HomeActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_home);
 
+
         //getting user info from sharedPreferences
         sharedPreferences = getSharedPreferences("UserInfo", 0);
+
+        //clear sharedPreferences
+       // sharedPreferences.edit().clear().commit();
+
+
+        //getting user info from sharedPreferences
         username = sharedPreferences.getString("USERNAME", "");
         points = sharedPreferences.getInt("POINTS",0);
 

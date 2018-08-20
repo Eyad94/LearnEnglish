@@ -309,6 +309,10 @@ public class PictureActivity extends AppCompatActivity {
         if(current_question_index >= names_of_pictures.size())
             current_question_index = 0;
 
+        String url = url_of_pictures.get(current_question_index);
+        AsyncImageView asyncImageView = new AsyncImageView(imageView);
+        asyncImageView.loadUrl(url);
+
         start_count_down();
         word_in_txt = "";
         word_textView.setText(word_in_txt);
@@ -320,10 +324,6 @@ public class PictureActivity extends AppCompatActivity {
         word_of_picture = word_of_picture.toLowerCase();
 
         fill_letters_in_Buttons();
-
-        String url = url_of_pictures.get(current_question_index);
-        AsyncImageView asyncImageView = new AsyncImageView(imageView);
-        asyncImageView.loadUrl(url);
 
     }
 
