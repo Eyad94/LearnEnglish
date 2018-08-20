@@ -291,8 +291,10 @@ public class VocabularyActivity extends AppCompatActivity {
                 break;
             case "Basic":
                 current_question_index = sharedPreferences.getInt("VOCABULARY2",0);
+                break;
             case "Advanced":
                 current_question_index = sharedPreferences.getInt("VOCABULARY3",0);
+                break;
         }
 
     }
@@ -308,8 +310,10 @@ public class VocabularyActivity extends AppCompatActivity {
                 break;
             case "Basic":
                 editor.putInt("VOCABULARY2", current_question_index);
+                break;
             case "Advanced":
                 editor.putInt("VOCABULARY3", current_question_index);
+                break;
         }
         editor.commit();
     }

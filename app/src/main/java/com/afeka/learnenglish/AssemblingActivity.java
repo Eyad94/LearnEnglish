@@ -416,8 +416,10 @@ public class AssemblingActivity extends AppCompatActivity {
                 break;
             case "Basic":
                 editor.putInt("Assembling2", current_question_index);
+                break;
             case "Advanced":
                 editor.putInt("Assembling3", current_question_index);
+                break;
         }
         editor.commit();
     }

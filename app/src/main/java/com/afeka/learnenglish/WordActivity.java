@@ -579,8 +579,10 @@ public class WordActivity extends AppCompatActivity {
                 break;
             case "Basic":
                 editor.putInt("WORD2", current_question_index);
+                break;
             case "Advanced":
                 editor.putInt("WORD3", current_question_index);
+                break;
         }
         editor.commit();
     }

@@ -412,8 +412,10 @@ public class PictureActivity extends AppCompatActivity {
                 break;
             case "Basic":
                 current_question_index = sharedPreferences.getInt("PICTURE2",0);
+                break;
             case "Advanced":
                 current_question_index = sharedPreferences.getInt("PICTURE3",0);
+                break;
         }
 
     }
@@ -429,8 +431,10 @@ public class PictureActivity extends AppCompatActivity {
                 break;
             case "Basic":
                 editor.putInt("PICTURE2", current_question_index);
+                break;
             case "Advanced":
                 editor.putInt("PICTURE3", current_question_index);
+                break;
         }
         editor.commit();
     }
