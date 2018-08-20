@@ -397,8 +397,10 @@ public class AssemblingActivity extends AppCompatActivity {
                 break;
             case "Basic":
                 current_question_index = sharedPreferences.getInt("Assembling2",0);
+                break;
             case "Advanced":
                 current_question_index = sharedPreferences.getInt("Assembling3",0);
+                break;
         }
 
     }
